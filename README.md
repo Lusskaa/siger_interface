@@ -3,17 +3,17 @@
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
 
-<img src="" alt="exemplo imagem">
+<img src="./assets/SIGER_LOGIN_INTERFACE.PNG" alt="login siger">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> Imagem da página de login do programa para gerenciamento de teste de controle de qualidade em radioterapia.
 
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
+- [ ] Tarefa 1
+- [ ] Tarefa 2
+- [ ] Tarefa 3
 - [ ] Tarefa 4
 - [ ] Tarefa 5
 
@@ -69,25 +69,25 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="./assets/imagem Lucas editada.png" width="100px;" alt="Lucas Martins"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>Lucas Martins</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
+        <img src="./assets/foto pedroza editada por enquanto.png" width="100px;" alt="Antônio Carlos Pedroza"/><br>
         <sub>
-          <b>Mark Zuckerberg</b>
+          <b>ntônio Carlos Pedroza</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="./assets/Imagem samuel editada.png" width="100px;" alt="Foto do Steve Jobs"/><br>
         <sub>
-          <b>Steve Jobs</b>
+          <b>Samuel Ramalho</b>
         </sub>
       </a>
     </td>
