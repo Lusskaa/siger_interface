@@ -1,0 +1,95 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
+
+Experimente a nova plataforma cruzada PowerShell https://aka.ms/pscore6
+
+PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+Ferramenta de Gerenciamento e Manutenção de Imagens de Implantação
+Versão: 10.0.19041.844
+
+Versão da Imagem: 10.0.19043.1586
+
+Habilitando recurso(s)
+[==========================100.0%==========================]
+A operação foi concluída com êxito.
+PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Ferramenta de Gerenciamento e Manutenção de Imagens de Implantação
+Versão: 10.0.19041.844
+
+Versão da Imagem: 10.0.19043.1586
+
+Habilitando recurso(s)
+[==========================100.0%==========================]
+A operação foi concluída com êxito.
+PS C:\WINDOWS\system32> wsl --set-default-version 2
+Para obter informações sobre as principais diferenças em relação ao WSL 2, visite https://aka.ms/wsl2
+A operação foi concluída com êxito.
+PS C:\WINDOWS\system32> docker run --name codeburger-postgres -e POSTGRES_PASSWORD-postgres -p 5432:5432 -d postgres
+Unable to find image 'postgres:latest' locally
+latest: Pulling from library/postgres
+ae13dd578326: Pull complete
+723e40c35aaf: Pull complete
+bf97ae6a09b4: Pull complete
+2c965b3c8cbd: Pull complete
+c3cefa46a015: Pull complete
+64a7315fc25c: Pull complete
+b9846b279f7d: Pull complete
+ed988fb8e7d9: Pull complete
+ed4bb4fd8bb5: Pull complete
+ead27f1733c8: Pull complete
+7d493bacd383: Pull complete
+0920535e8417: Pull complete
+db76d5bdbf2c: Pull complete
+Digest: sha256:14a621708fddaf5620fb3dea3e313e8afc3615b6fe0b824ff929692823952144
+Status: Downloaded newer image for postgres:latest
+18a83e21ad26bc47dbe3f259c8078900d0354244b242f96fb08109b9d238bdd0
+PS C:\WINDOWS\system32>
+
+docker ps => ver todos os containers que estão rodando
+
+docker ps -a => ver todos os containers
+
+docker ps (nome do container) => faz o container rodarg
+
+INICIANDOI UM container
+https://hub.docker.com/_/postgres
+docker run --name codeburger-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres   
+
+
+PS F:\GIT-HUB_REPOSITORY\aprendizado_programing> docker run --name codeburger-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres  
+680b20150291c30a15d47f56186d1bbf1308de2818e228c97aabdd2b6ee57d9d
+PS F:\GIT-HUB_REPOSITORY\aprendizado_programing> docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS                    NAMES
+680b20150291   postgres   "docker-entrypoint.s…"   22 seconds ago   Up 21 seconds   0.0.0.0:5432->5432/tcp   codeburger-postgres
+
+
+docker stop (nome do container) // derruba e dá a parada do container
+
+
+docker start (nome do contaimer) inicia o container
+
+a gente vai usar o aplicativo postbird para visualizar o nosso banco de dados
+
+
+A migration vai criar coisas que queremos fazer com os bancos de dados
+
+
+import { Router } from 'express'
+import { v4 } from 'uuid'
+
+import User from './app/models/User'
+
+const routes = new Router()
+
+routes.get('/', async (request, response) => {
+  const user = await User.create({
+    id: v4(),
+    name: 'Lucas',
+    email: 'lucasmartins2809@gmail.com',
+    password_hash: '123456789'
+  })
+  response.json(user)
+})
+export default routes
