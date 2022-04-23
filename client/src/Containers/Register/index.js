@@ -98,7 +98,7 @@ function Register() {
 
         <ContainerRegister>
           <ContainerItens>
-            <h2 class="logintext">Novo usuário</h2>
+            <h2 className="logintext">Novo usuário</h2>
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
               <Lable>Nome</Lable>
               <Input

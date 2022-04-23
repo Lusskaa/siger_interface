@@ -4,7 +4,7 @@ import machineTypesEnum from '../entities/enum/MachineType'
 const store = async (request, response, next) => {
   const schema = Yup.object().shape({
     name: Yup.string().required(),
-    type: Yup.string().required().oneOf(machineTypesEnum),
+    type: Yup.string().required().oneOf(machineTypesEnum)
   })
 
   try {
@@ -16,5 +16,5 @@ const store = async (request, response, next) => {
 }
 
 export default {
-  store,
+  store
 }

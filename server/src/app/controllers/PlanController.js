@@ -8,6 +8,8 @@ import planService from '../services/Plan'
 
 import db from '../../database'
 
+import { Op } from 'sequelize'
+
 class PlanController {
   async store(request, response) {
     try {
@@ -32,6 +34,17 @@ class PlanController {
   }
 
   async index(request, response) {
+    const where = {}
+    if (request.query.start && request.query.end) {
+      where.date = {
+        [Op.gte]: request.query.start,
+        [Op.lte]: request.query.end,
+      }
+    }
+    if (request.query.user) {
+      where.users_id = request.query.user
+    }
+
     const plan = await Plan.findAll({
       include: [
         {
@@ -48,6 +61,7 @@ class PlanController {
           as: 'machines',
         },
       ],
+      where,
     })
     return response.json(plan)
   }

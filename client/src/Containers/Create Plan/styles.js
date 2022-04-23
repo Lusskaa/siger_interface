@@ -80,7 +80,6 @@ export const ImgLogo = styled.img `
 
 export const ContainerRegister = styled.div `
     width: 954px;
-    height: 300px;
     background: rgba(242, 191, 145, 0.3);
     border-radius: 30px;
     display: flex;
@@ -89,7 +88,7 @@ export const ContainerRegister = styled.div `
     align-items: center;
     gap: 100px;
     margin-bottom: 40px;
-
+    padding-bottom: 20px;
 `
 export const TitleSingUp = styled.p `
     width: 200px;

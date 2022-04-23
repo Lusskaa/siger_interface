@@ -130,7 +130,7 @@ function RegisterAndDeleteMachines(){
                 <ContainerRegister>
 
                     <ContainerItens>
-                        <h2 class="logintext">Nova máquina</h2>
+                        <h2 className="logintext">Nova máquina</h2>
                         <form noValidate onSubmit={handleSubmit(onSubmit)}> 
 
                             <Lable>Nome</Lable>

@@ -87,7 +87,7 @@ function Login() {
         <ImgLogo src={LogoSiger} alt="Logo Siger" />
 
         <ContainerItens>
-          <h2 class="logintext">Fazer Login</h2>
+          <h2 className="logintext">Fazer Login</h2>
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <Input
               placeholder="E-mail"

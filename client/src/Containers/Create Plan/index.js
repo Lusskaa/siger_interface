@@ -36,16 +36,40 @@ import {
   P,
 } from "./styles";
 
+import { DatePicker } from "antd";
+
+import moment from "moment";
+
 function PlanCalendar() {
+  const { RangePicker } = DatePicker;
+
+  const [tests, setTests] = useState([]);
+  const [machines, setmachines] = useState([]);
+  const [users, setusers] = useState([]);
+  const [plans, setPlans] = useState([]);
+  const [filters, setFilters] = useState({
+    dates: [],
+    user: "",
+  });
+
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("siger:userData"))
+  );
+
+  const [preview, setPreview] = useState([]);
+
+  useEffect(() => {
+    startUp();
+  }, []);
+
   const schema = Yup.object().shape({
-    name: Yup.string().required("O seu nome é obrigatório"),
+    user: Yup.string().required("O usuário é obrigatório"),
+    machine: Yup.string().required("A máquina é obrigatória"),
+    test: Yup.string().required("O teste é obrigatório"),
     replay: Yup.string().required("A Tolerância é obrigatória"),
     date: Yup.date().required("O tipo de teste é obrigatório"),
     frequency: Yup.string().required(
       "A frequência recomendada do teste é obrigatória"
-    ),
-    machine: Yup.string().required(
-      "A recomendação de máquina é obrigatória"
     ),
   });
 
@@ -56,27 +80,35 @@ function PlanCalendar() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  
 
-  const onSubmit = async (planData) => {
+  const createPreview = (planData) => {
+    let dateCounter = moment(planData.date);
+    let dateLimit = moment(planData.date);
+    dateLimit = dateLimit.add(planData.replay * planData.frequency, "days");
 
-// Ccolocar o while
+    const preview = [];
+    while (dateCounter.isSameOrBefore(dateLimit, "day")) {
+      preview.push({
+        users_id: !!currentUser.isAdm ? planData.user : currentUser.id,
+        machines_id: planData.machine,
+        tests_id: planData.test,
+        date: dateCounter.format("YYYY-MM-DD"),
+      });
+      dateCounter = dateCounter.add(planData.frequency, "days");
+    }
+    setPreview(preview);
+  };
 
-
-/*     console.log(JSON.stringify(planData, null, 2)); */
+  const onSubmit = async () => {
     try {
       const { status } = await api.post(
-        "/plans",
+        !!currentUser.isAdm ? `/users/${preview[0].users_id}/plans` : "/plans",
+        preview,
         {
-          /*                 name: testData.name,
-                type: testData.type,
-                recommendedfrequency: testData.recommendedfrequency,
-                recommendedmachine: testData.recommendedmachine,
-                tolerance: testData.tolerance,
-                isfunctional: testData.isfunctional */
-        },
-        { validateStatus: () => true }
+          validateStatus: () => true,
+        }
       );
-
       if (status === 201 || status === 200) {
         toast.success("Teste criado com sucesso");
       } else if (status === 409) {
@@ -87,36 +119,54 @@ function PlanCalendar() {
         throw new Error();
       }
 
-      const { data } = await api.get("/tests");
-      setTests(data);
+      const { data: plans } = await api.get("/plans");
+      setPlans(plans);
+
     } catch (err) {
       toast.error("Falha no sistema, tente novamente");
     }
   };
 
-  const [tests, setTests] = useState();
-  const [machines, setmachines] = useState();
-  const [users, setusers] = useState();
+  const filterDates = async (dates) => {
+    const start = dates && dates.length ? dates[0].format("YYYY-MM-DD") : null;
+    const end = dates && dates.length ? dates[1].format("YYYY-MM-DD") : null;
+    setFilters({
+      ...filters,
+      start,
+      end,
+    });
 
-  useEffect(() => {
-    async function loadTests() {
-      const { data } = await api.get("/tests");
-      setTests(data);
-    }
-    loadTests();
+    const { data: plans } = await api.get("/plans/", {
+      params: { ...filters, start, end },
+    });
+    setPlans(plans);
+  };
 
-    async function loadMachines() {
-      const { data } = await api.get("/machines");
-      setmachines(data);
-    }
-    loadMachines();
+  const filterUser = async (user) => {
+    setFilters({
+      ...filters,
+      user,
+    });
 
-    async function loadUsers() {
-      const { data } = await api.get("/users");
-      setusers(data);
-    }
-    loadUsers();
-  }, []);
+    const { data: plans } = await api.get("/plans/", {
+      params: { ...filters, user },
+    });
+    setPlans(plans);
+  };
+
+  const startUp = async () => {
+    const { data: tests } = await api.get("/tests");
+    setTests(tests);
+
+    const { data: machines } = await api.get("/machines");
+    setmachines(machines);
+
+    const { data: users } = await api.get("/users");
+    setusers(users);
+
+    const { data: plans } = await api.get("/plans");
+    setPlans(plans);
+  };
 
   return (
     <Body>
@@ -128,98 +178,140 @@ function PlanCalendar() {
           <strong>Voltar para Home</strong>
         </Link>
         <TitlePage style={{ width: "400px" }}>Cadastrar planos</TitlePage>
-        <form noValidate onSubmit={handleSubmit(onSubmit)}>
+        <form noValidate onSubmit={handleSubmit(createPreview)}>
           <ContainerRegister>
             <ContainerItens>
-              <h2 class="logintext">Planejamento de testes</h2>
+              <h2 className="logintext">Planejamento de testes</h2>
 
               <Lable>Usuário responsável</Lable>
-
-              <Select {...register("name")} error={errors.name?.message}>
-                <option />
-                {users &&
-                  users.map((user) => (
-                    <option value={user.id}>{user.name}</option>
-                  ))}
-              </Select>
-              <ErrorMessage>{errors.name?.message}</ErrorMessage>
+              {!!currentUser.isAdm ? (
+                <>
+                  <Select {...register("user")} error={errors.user?.message}>
+                    <option />
+                    {users &&
+                      users.map((user) => (
+                        <option key={user.id} value={user.id}>
+                          {user.name}
+                        </option>
+                      ))}
+                  </Select>
+                  <ErrorMessage>{errors.user?.message}</ErrorMessage>
+                </>
+              ) : (
+                currentUser.name
+              )}
 
               <Lable>Máquina selecionada</Lable>
-
-              <Select
-                {...register("machine")}
-                error={errors.choiceMachine?.message}
-              >
+              <Select {...register("machine")} error={errors.machine?.message}>
                 <option />
                 {machines &&
                   machines.map((machine) => (
-                    <option value={machine.id}>{machine.name}</option>
+                    <option key={machine.id} value={machine.id}>
+                      {machine.name}
+                    </option>
                   ))}
               </Select>
-              <ErrorMessage>{errors.choiceMachine?.message}</ErrorMessage>
-            </ContainerItens>
+              <ErrorMessage>{errors.machine?.message}</ErrorMessage>
 
-            <ImgLogo src={LogoSiger} alt="Logo Siger" />
-          </ContainerRegister>
-
-          <Container>
-            <Title style={{ width: "600px" }}>
-              {" "}
-              Selecione os testes de controle de qualidade e insira as
-              informações
-            </Title>
-
-            <ContainerTests>
-              <ContainerTitles>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>Nome</P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>Tipo</P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>
-                  Tolerância
-                </P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>
-                  Frequência recomendada
-                </P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>Data base</P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>
-                  Frequência de x em x dias
-                </P>
-                <P style={{ fontWeight: "700", margin: "0 10px" }}>
-                  Número de repetições
-                </P>
-              </ContainerTitles>
-              <Carousel
-                verticalMode
-                itemsToShow={8}
-                style={{ width: "80em", justifySelf: "center" }}
-              >
+              <Lable>Teste selecionado</Lable>
+              <Select {...register("test")} error={errors.test?.message}>
+                <option />
                 {tests &&
                   tests.map((test) => (
-                    <ContainerCarousel key={test.id}>
-                      <P>{test.name}</P>
-                      <P>{test.type}</P>
-                      <P>{test.tolerance}</P>
-                      <P>{test.recommendedfrequency}</P>
-                      <input type="date" {...register("date")}></input>
-                      <input
-                        type="number"
-                        placeholder="Dias"
-                        {...register("frequency")}
-                      ></input>
-                      <input
-                        type="number"
-                        placeholder="Repetições"
-                        {...register("replay")}
-                      ></input>
-                    </ContainerCarousel>
+                    <option key={test.id} value={test.id}>
+                      {test.name}
+                    </option>
                   ))}
-              </Carousel>
-            </ContainerTests>
-          </Container>
+              </Select>
+              <ErrorMessage>{errors.test?.message}</ErrorMessage>
 
-          <Button style={{ width: "800px" }} type="submit">
-            Cadastrar
-          </Button>
+              <Lable>Data do primeiro teste</Lable>
+              <input type="date" {...register("date")} />
+
+              <Lable>Frequência (dias)</Lable>
+              <input
+                type="number"
+                placeholder="Dias"
+                {...register("frequency")}
+              />
+
+              <Lable>Repetições</Lable>
+              <input
+                type="number"
+                placeholder="Repetições"
+                {...register("replay")}
+              />
+              <Button type="submit">Simular</Button>
+            </ContainerItens>
+            <ImgLogo src={LogoSiger} alt="Logo Siger" />
+          </ContainerRegister>
         </form>
+        {preview.length != 0 && (
+          <div>
+            <p>O teste será planejado para as seguintes datas:</p>
+            {preview
+              .map((plan) =>
+                moment(plan.date, "YYYY-MM-DD").format("DD/MM/YYYY")
+              )
+              .join(", ")}
+            <p>Deseja cadastrá-los?</p>
+          </div>
+        )}
+        <Button
+          style={{ width: "800px" }}
+          disabled={preview.length == 0}
+          onClick={onSubmit}
+        >
+          Cadastrar
+        </Button>
+        <Container>
+          <Title>Planejamentos</Title>
+
+          <Lable>Datas</Lable>
+          <RangePicker format="DD/MM/YYYY" onChange={filterDates} />
+          <Lable>Usuário</Lable>
+          <Select
+            style={{ width: "25%" }}
+            onChange={(event) => filterUser(event.target.value)}
+          >
+            <option value={null} />
+            {users &&
+              users.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
+              ))}
+          </Select>
+
+          <ContainerTests>
+            <ContainerTitles>
+              <P style={{ fontWeight: "700", margin: "0 10px" }}>Usuário</P>
+              <P style={{ fontWeight: "700", margin: "0 10px" }}>Teste</P>
+              <P style={{ fontWeight: "700", margin: "0 10px" }}>Máquina</P>
+              <P style={{ fontWeight: "700", margin: "0 10px" }}>Data</P>
+              <P style={{ fontWeight: "700", margin: "0 10px" }}>Opções</P>
+            </ContainerTitles>
+
+            <Carousel
+              verticalMode
+              itemsToShow={8}
+              style={{ width: "80em", justifySelf: "center" }}
+            >
+              {plans.length != 0 &&
+                plans.map((plan) => (
+                  <ContainerCarousel key={plan.id}>
+                    <P>{plan.users.name}</P>
+                    <P>{plan.tests.name}</P>
+                    <P>{plan.machines.name}</P>
+                    <P>
+                      {moment(plan.date, "YYYY-MM-DD").format("DD/MM/YYYY")}
+                    </P>
+                    <P>butons: complete (changeStatus) & delete</P>
+                  </ContainerCarousel>
+                ))}
+            </Carousel>
+          </ContainerTests>
+        </Container>
       </Main>
     </Body>
   );
