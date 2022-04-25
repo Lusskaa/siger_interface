@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 import Trash from "../../assets/trash.svg";
 import addIcon from "../../assets/iconADD.svg";
+import onIcon from "../../assets/onIcon.svg"
+import offIcon from "../../assets/offIcon.svg"
 
 import Carousel from "react-elastic-carousel";
 
@@ -144,13 +146,13 @@ function UpdateAndDeleteUsers() {
                         {user.isActive ? (
                           <img
                             className="addIcon" // check verde ou icone que deixe claro que está ativado
-                            src={addIcon}
+                            src={onIcon}
                             alt="add icon"
                           />
                         ) : (
                           <img
                             className="addIcon" // X vermelho ou icone que deixe claro que está ativado
-                            src={addIcon}
+                            src={offIcon}
                             alt="add icon"
                           />
                         )}

@@ -14,6 +14,7 @@ export const ContainerButton = styled.button`
   color: #ffffff;
   cursor: pointer;
   margin-bottom: 20px;
+  margin-top: 10px;
 
   &:hover {
     opacity: ${(props) => (props.disabled ? 1 : 0.8)};

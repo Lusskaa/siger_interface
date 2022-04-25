@@ -92,7 +92,6 @@ export const ContainerItens = styled.div `
     form {
         display: flex;
         flex-direction: column;
-        gap:8px;
         align-items: center;
     }
 

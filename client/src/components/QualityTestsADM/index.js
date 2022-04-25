@@ -10,6 +10,7 @@ import  Title  from "../Titles"
 
 function QualityTestsADM () {
     const [tests, setTests] = useState()
+    const user = localStorage.getItem("siger:userData");
 
     useEffect(()=>{
 
@@ -45,7 +46,11 @@ function QualityTestsADM () {
                     <P style={{fontWeight: '700'}}>Tolerância</P>
                     <P style={{fontWeight: '700'}}>Frequência recomendada</P>
                     <P style={{fontWeight: '700'}}>Máquina recomendada</P>
-                    <P style={{fontWeight: '700', width: '45px' }}>Deletar</P>
+                    { JSON.parse(user).isAdm ? (
+                        <P style={{fontWeight: '700', width: '45px' }}>Deletar</P> 
+                                    ) : (
+                                     ''
+                                    )}
                 </ContainerTitles>
                 <Carousel verticalMode itemsToShow={8} style ={{width: "90%", justifySelf: "center"}}>
                     {
@@ -55,9 +60,18 @@ function QualityTestsADM () {
                                 <P>{test.name}</P>
                                   <P>{test.type}</P>
                                   <P>{test.tolerance}</P>
-                                  <P>{test.recommendedfrequency}</P>
-                                  <P>{test.recommendedmachine}</P>
-                                  <button onClick={()=> deletetest(test.id)}><img src={Trash} alt="lata de lixo"/></button>
+                                  <P>{test.recommendedFrequency}</P>
+                                  <P>{test.recommendedMachineType}</P>
+
+                                  <button onClick={()=> deletetest(test.id)}>
+                                    { JSON.parse(user).isAdm ? (
+                                    <img src={Trash} alt="lata de lixo"/>
+                                    ) : (
+                                     ''
+                                    )}
+                                      
+                                    
+                                </button>
                                   
 
                                 

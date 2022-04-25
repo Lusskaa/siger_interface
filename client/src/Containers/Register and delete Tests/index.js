@@ -45,6 +45,7 @@ import {
 } from "./styles";
 
 function RegisterAndDeleteTests() {
+  const [tests, setTests] = useState([]);
   const schema = Yup.object().shape({
     name: Yup.string().required("O seu nome é obrigatório"),
     tolerance: Yup.string().required("A Tolerância é obrigatória"),
@@ -54,9 +55,9 @@ function RegisterAndDeleteTests() {
     ),
     recommendedMachineType: Yup.string().required(
       "A recomendação de máquina é obrigatória"
-    ),
-  });
-
+      ),
+    });
+    
   const {
     register,
     handleSubmit,
@@ -82,7 +83,7 @@ function RegisterAndDeleteTests() {
 
       if (status === 201 || status === 200) {
         toast.success("Teste criado com sucesso");
-      } else if (status === 409) {
+      } else if (status === 400) {
         toast.error(
           "Teste já cadastrado, para o mesmo nome nem a tolerância nem a frequência deve ser a mesma"
         );
@@ -90,14 +91,16 @@ function RegisterAndDeleteTests() {
         throw new Error();
       }
 
-      const { data } = await api.get("/tests");
-      setTests(data);
+      const { data : tests } = await api.get("/tests");
+      setTests(tests);
+
+
+
     } catch (err) {
       toast.error("Falha no sistema, tente novamente");
     }
   };
 
-  const [tests, setTests] = useState();
 
   useEffect(() => {
     async function loadTests() {
@@ -106,13 +109,6 @@ function RegisterAndDeleteTests() {
     }
     loadTests();
   }, []);
-  async function deletetest(test_Id) {
-    await api.delete(`/tests/${test_Id}`); // deletando no back
-
-    const newTests = tests.filter((test) => test.id !== test_Id); // deletando no front
-
-    setTests(newTests);
-  }
 
   return (
     <Body>
@@ -201,43 +197,9 @@ function RegisterAndDeleteTests() {
 
           <ImgLogo src={LogoSiger} alt="Logo Siger" />
         </ContainerRegister>
+        
+      <QualityTestsADM/>
 
-        <Container>
-          <Title style={{ width: "600px" }}>
-            {" "}
-            Testes de controle de qualidade cadastrados
-          </Title>
-
-          <ContainerTests>
-            <ContainerTitles>
-              <P style={{ fontWeight: "700" }}>Nome</P>
-              <P style={{ fontWeight: "700" }}>Tipo</P>
-              <P style={{ fontWeight: "700" }}>Tolerância</P>
-              <P style={{ fontWeight: "700" }}>Frequência recomendada</P>
-              <P style={{ fontWeight: "700" }}>Máquina recomendada</P>
-              <P style={{ fontWeight: "700", width: "45px" }}>Deletar</P>
-            </ContainerTitles>
-            <Carousel
-              verticalMode
-              itemsToShow={8}
-              style={{ width: "80em", justifySelf: "center" }}
-            >
-              {tests &&
-                tests.map((test) => (
-                  <ContainerCarousel key={test.id}>
-                    <P>{test.name}</P>
-                    <P>{test.type}</P>
-                    <P>{test.tolerance}</P>
-                    <P>{test.recommendedFrequency}</P>
-                    <P>{test.recommendedMachineType}</P>
-                    <button onClick={() => deletetest(test.id)}>
-                      <img src={Trash} alt="lata de lixo" />
-                    </button>
-                  </ContainerCarousel>
-                ))}
-            </Carousel>
-          </ContainerTests>
-        </Container>
       </Main>
     </Body>
   );

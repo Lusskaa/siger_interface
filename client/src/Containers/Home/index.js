@@ -3,11 +3,13 @@ import React from "react";
 import HomePrincipalImage from "../../assets/people.svg";
 import TitlePage from "../../components/Titles";
 
-import QualityTests from "../../components/QualityTests";
 import HeaderPage from "../../components/Header";
 import LinkPage from "../../components/LinkPages";
 
 import { Container, HomeImg, ContainerWelcome, Welcome } from "./styles";
+import QualityTestsADM from "../../components/QualityTestsADM";
+import Plans from "../../components/Plans";
+
 
 function Home() {
   return (
@@ -31,7 +33,10 @@ function Home() {
         </Welcome>
       </ContainerWelcome>
 
-      <QualityTests />
+      
+
+      <Plans/>
+      <QualityTestsADM/>
     </Container>
   );
 }

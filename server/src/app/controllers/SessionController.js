@@ -3,11 +3,11 @@ import User from '../entities/models/User'
 import authConfig from '../../config/auth'
 
 class SessionController {
-  async login(request, response) {
+  async login (request, response) {
     const { email, password } = request.body
 
     const user = await User.findOne({
-      where: { email },
+      where: { email }
     })
 
     if (!user || !(await user.checkPassword(password))) {
@@ -23,10 +23,10 @@ class SessionController {
       email,
       name: user.name,
       token: jwt.sign({ id: user.id, name: user.name }, authConfig.secret, {
-        expiresIn: authConfig.expiresIn,
+        expiresIn: authConfig.expiresIn
       }),
       isAdm: process.env.ADMS.split(',').includes(user.id),
-      isActive: true,
+      isActive: true
     })
   }
 }

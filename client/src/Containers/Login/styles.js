@@ -64,7 +64,6 @@ export const ContainerItens = styled.div `
     form {
         display: flex;
         flex-direction: column;
-        gap:20px;
         align-items: center;
     }
 

@@ -14,6 +14,7 @@ import Title from "../../components/Titles";
 
 import HeaderPage from "../../components/Header";
 import LinkPage from "../../components/LinkPages";
+import Plans from "../../components/Plans";
 
 import Button from "../../components/Button";
 import TitlePage from "../../components/Titles";
@@ -27,7 +28,7 @@ import {
   ContainerItens,
   ErrorMessage,
   ContainerRegister,
-  Lable,
+  Label,
   Select,
   Container,
   ContainerCarousel,
@@ -183,7 +184,7 @@ function PlanCalendar() {
             <ContainerItens>
               <h2 className="logintext">Planejamento de testes</h2>
 
-              <Lable>Usuário responsável</Lable>
+              <Label>Usuário responsável</Label>
               {!!currentUser.isAdm ? (
                 <>
                   <Select {...register("user")} error={errors.user?.message}>
@@ -201,7 +202,7 @@ function PlanCalendar() {
                 currentUser.name
               )}
 
-              <Lable>Máquina selecionada</Lable>
+              <Label>Máquina selecionada</Label>
               <Select {...register("machine")} error={errors.machine?.message}>
                 <option />
                 {machines &&
@@ -213,7 +214,7 @@ function PlanCalendar() {
               </Select>
               <ErrorMessage>{errors.machine?.message}</ErrorMessage>
 
-              <Lable>Teste selecionado</Lable>
+              <Label>Teste selecionado</Label>
               <Select {...register("test")} error={errors.test?.message}>
                 <option />
                 {tests &&
@@ -225,17 +226,17 @@ function PlanCalendar() {
               </Select>
               <ErrorMessage>{errors.test?.message}</ErrorMessage>
 
-              <Lable>Data do primeiro teste</Lable>
+              <Label>Data do primeiro teste</Label>
               <input type="date" {...register("date")} />
 
-              <Lable>Frequência (dias)</Lable>
+              <Label>Frequência (dias)</Label>
               <input
                 type="number"
                 placeholder="Dias"
                 {...register("frequency")}
               />
 
-              <Lable>Repetições</Lable>
+              <Label>Repetições</Label>
               <input
                 type="number"
                 placeholder="Repetições"
@@ -264,12 +265,14 @@ function PlanCalendar() {
         >
           Cadastrar
         </Button>
+
+        
         <Container>
           <Title>Planejamentos</Title>
 
-          <Lable>Datas</Lable>
+          <Label>Datas</Label>
           <RangePicker format="DD/MM/YYYY" onChange={filterDates} />
-          <Lable>Usuário</Lable>
+          <Label>Usuário</Label>
           <Select
             style={{ width: "25%" }}
             onChange={(event) => filterUser(event.target.value)}
@@ -312,6 +315,10 @@ function PlanCalendar() {
             </Carousel>
           </ContainerTests>
         </Container>
+
+        <Plans/>
+
+  
       </Main>
     </Body>
   );

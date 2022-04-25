@@ -122,7 +122,6 @@ export const ContainerItens = styled.div `
     form {
         display: flex;
         flex-direction: column;
-        gap:8px;
         align-items: center;
     }
 
@@ -265,6 +264,7 @@ export const ContainerCarousel = styled.div`
     align-items: center;
     justify-items: center;
     border-bottom: 2px solid #CAD2D3;
+    
 
     button {
         background: none;

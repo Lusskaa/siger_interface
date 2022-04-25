@@ -110,13 +110,13 @@ export const ImgLogoSuperior = styled.img `
     height: 68px;
     margin: 5px 30px 5px 10px;
 `
-export const Lable = styled.p `
+export const Label = styled.p `
     align-self: flex-start;
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
-
     color: #000000;
+    margin-bottom:3px
 
 `
 
@@ -127,9 +127,7 @@ export const ContainerItens = styled.div `
     width: 400px;
     margin-top: 25px;
     flex-wrap:wrap;
-    gap: 10px;
-
-
+    
     h2{
         font-style: normal;
         font-weight: 400;
@@ -138,18 +136,22 @@ export const ContainerItens = styled.div `
         color: #000000;
         margin-bottom: 10px;
     }
+    input{
+        border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
+        width: 100%;
+        height: 40px;
+        background: #F7F7F7;
+        box-shadow: -2px 2px 3px;
+        border-radius: 10px;
+        border: none;
+        position: relative;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+    }
 `
 
 export const Select = styled.select `
-    width: 321px;
-    height: 46px;
-    background: #F7F7F7;
-    box-shadow: -4px 4px 8px;
-    border-radius: 10px;
     border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
-    position: relative;
-    padding: 10px 15px;
-
     width: 100%;
     height: 40px;
     background: #F7F7F7;

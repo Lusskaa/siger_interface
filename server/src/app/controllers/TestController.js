@@ -2,18 +2,18 @@ import { v4 } from 'uuid'
 import Test from '../entities/models/Test'
 
 class TestController {
-  async store(request, response) {
+  async store (request, response) {
     const {
       name,
       type,
       recommendedFrequency,
       recommendedMachineType,
       description,
-      tolerance,
+      tolerance
     } = request.body
 
     const testExists = await Test.findOne({
-      where: { name, type, recommendedFrequency, tolerance },
+      where: { name, type, recommendedFrequency, tolerance }
     })
 
     if (testExists) {
@@ -27,18 +27,18 @@ class TestController {
       recommendedFrequency,
       recommendedMachineType,
       description,
-      tolerance,
+      tolerance
     })
 
     return response.status(201).json(test)
   }
 
-  async index(request, response) {
+  async index (request, response) {
     const test = await Test.findAll()
     return response.json(test)
   }
 
-  async delete(request, response) {
+  async delete (request, response) {
     const { id } = request.params
 
     const test = await Test.findByPk(id)
@@ -48,7 +48,7 @@ class TestController {
     }
 
     await Test.destroy({
-      where: { id },
+      where: { id }
     })
 
     return response.status(204).json()
