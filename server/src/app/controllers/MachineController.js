@@ -33,7 +33,7 @@ class MachineController {
     const machine = await Machine.findByPk(id)
 
     if (!machine) {
-      return response.status(404).json({ message: 'Máquina não encontrada' })
+      return response.status(404).json({ error: 'Máquina não encontrada' })
     }
 
     await Machine.destroy({

@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.addColumn('plans', 'status', {
       type: Sequelize.BOOLEAN,
       allowNull: true,
+      defaultValue: false,
     })
   },
 

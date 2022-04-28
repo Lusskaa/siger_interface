@@ -5,10 +5,10 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import Login from "../Containers/Login";
 import Register from "../Containers/Register";
 import Home from "../Containers/Home";
-import RegisterAndDeleteTests from "../Containers/Register and delete Tests";
-import RegisterAndDeleteMachines from "../Containers/Register and delete Machines";
-import UpdateAndDeleteUsers from "../Containers/Update and delete Users";
-import PlanCalendar from "../Containers/Create Plan";
+import RegisterAndDeleteTests from "../Containers/Tests";
+import RegisterAndDeleteMachines from "../Containers/Machines";
+import UpdateAndDeleteUsers from "../Containers/Users";
+import PlanCalendar from "../Containers/Plan";
 
 import PrivateRoute from "./private-route";
 import PrivateAdmRoute from "./private-ADM-route";

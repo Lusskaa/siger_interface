@@ -11,11 +11,11 @@ class SessionController {
     })
 
     if (!user || !(await user.checkPassword(password))) {
-      return response.status(400).json({ message: 'Email ou senha inválidos' })
+      return response.status(400).json({ error: 'Email ou senha inválidos' })
     }
 
     if (!user.isActive) {
-      return response.status(403).json({ message: 'Usuário não está ativo' })
+      return response.status(403).json({ error: 'Usuário não está ativo' })
     }
 
     return response.status(200).json({

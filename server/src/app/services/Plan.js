@@ -5,11 +5,11 @@ import User from '../entities/models/User'
 import InvalidException from '../utils/InvalidException'
 
 class PlanService {
-  async store (planData) {
+  async store(planData) {
     const { date, tests_id, machines_id, users_id } = planData
 
     const plan = await Plan.findOne({
-      where: { date, tests_id, machines_id }
+      where: { date, tests_id, machines_id },
     })
     if (plan) {
       throw new InvalidException(
@@ -18,7 +18,7 @@ class PlanService {
     }
     const user = await User.findOne({
       where: { id: users_id },
-      attributes: ['isActive', 'name']
+      attributes: ['isActive', 'name'],
     })
     if (user && !user.isActive) {
       throw new InvalidException(`O usuário ${user.name} não está ativo`)
@@ -29,12 +29,12 @@ class PlanService {
       date,
       tests_id,
       machines_id,
-      users_id
+      users_id,
     }
   }
 
-  async update (request, response) {}
+  async update(request, response) {}
 
-  async delete (request, response) {}
+  async delete(request, response) {}
 }
 export default new PlanService()

@@ -33,7 +33,7 @@ const isAdm = async (request, response, next) => {
     if (!user || !user.isActive) {
       return response
         .status(403)
-        .json({ message: 'Este usuário não está ativo' })
+        .json({ error: 'Este usuário não está ativo' })
     }
 
     if (process.env.ADMS.split(',').includes(request.user.id)) {
@@ -41,10 +41,10 @@ const isAdm = async (request, response, next) => {
     } else {
       return response
         .status(403)
-        .json({ message: 'Você não tem permissão para acessa este conteúdo' })
+        .json({ error: 'Você não tem permissão para acessa este conteúdo' })
     }
   } catch (error) {
-    return response.status(401).json({ message: error.message })
+    return response.status(401).json({ error: error.message })
   }
 }
 
@@ -58,12 +58,12 @@ const isAuthenticated = async (request, response, next) => {
     if (!user || !user.isActive) {
       return response
         .status(403)
-        .json({ message: 'Este usuário não está ativo' })
+        .json({ error: 'Este usuário não está ativo' })
     }
 
     next()
   } catch (error) {
-    return response.status(401).json({ message: error.message })
+    return response.status(401).json({ error: error.message })
   }
 }
 

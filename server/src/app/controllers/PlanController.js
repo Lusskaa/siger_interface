@@ -11,13 +11,13 @@ import db from '../../database'
 import { Op } from 'sequelize'
 
 class PlanController {
-  async store (request, response) {
+  async store(request, response) {
     try {
       const transaction = async (transaction) => {
         for (let i = 0; i < request.body.length; i++) {
           const a = await planService.store(request.body[i])
           await Plan.create(a, {
-            transaction
+            transaction,
           })
         }
       }
@@ -28,17 +28,17 @@ class PlanController {
         .then((_) => response.status(201).send())
     } catch (error) {
       if (error.status && error.status === 400) {
-        return response.status(400).json({ message: error.message })
+        return response.status(400).json({ error: error.message })
       } else throw error
     }
   }
 
-  async index (request, response) {
+  async index(request, response) {
     const where = {}
     if (request.query.start && request.query.end) {
       where.date = {
         [Op.gte]: request.query.start,
-        [Op.lte]: request.query.end
+        [Op.lte]: request.query.end,
       }
     }
     if (request.query.user) {
@@ -55,25 +55,29 @@ class PlanController {
       include: [
         {
           model: Test,
-          as: 'tests'
+          as: 'tests',
         },
         {
           model: User,
           as: 'users',
-          attributes: ['id', 'name']
+          attributes: ['id', 'name'],
         },
         {
           model: Machine,
-          as: 'machines'
-        }
+          as: 'machines',
+        },
       ],
-      where
+      where,
+      order: [
+        ['date', 'ASC'],
+        ['tests', 'type'],
+      ],
     })
     return response.json(plan)
   }
 
-  async update (request, response) {}
+  async update(request, response) {}
 
-  async delete (request, response) {}
+  async delete(request, response) {}
 }
 export default new PlanController()
