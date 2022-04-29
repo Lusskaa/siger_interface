@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { DatePicker, Switch, Popconfirm } from 'antd' // Popover
 import moment from 'moment'
 import Trash from '../../assets/trash.svg'
-import checkTrue from '../../assets/checkTrue.svg'
-import checkNull from '../../assets/checkNull.svg'
 
 import { toast } from 'react-toastify'
 
@@ -113,7 +111,7 @@ function Plans({ users, tests, machines, refresh }) {
         })
         setPlans(plans)
       })
-  }
+    }
 
   async function setPlanStatus(plan) {
     await api
@@ -137,7 +135,6 @@ function Plans({ users, tests, machines, refresh }) {
   return (
     <Container>
       <Title>Planejamentos</Title>
-
       <Filters>
         <p className="filtersTitle">Filtros</p>
         <ConteinerFilters>
@@ -156,7 +153,7 @@ function Plans({ users, tests, machines, refresh }) {
               {users &&
                 users.map((user) => (
                   <option key={user.id} value={user.id}>
-                    {user.name}
+                    {user.name} 
                   </option>
                 ))}
             </Select>
@@ -220,16 +217,20 @@ function Plans({ users, tests, machines, refresh }) {
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
                       <Popconfirm
-                        title={`Tem certeza que deseja ${
-                          plan.status ? 'desfazer' : 'realizar'
-                        } este teste?`}
+                        title={
+                          `Tem certeza que deseja 
+                          ${
+                            plan.status ? 'desfazer' : 'realizar'
+                          } 
+                        este teste?`}
                         onConfirm={() => setPlanStatus(plan)}
                         okText="Sim"
                         cancelText="Não"
                       >
                         <Switch checked={plan.status} />
                       </Popconfirm>
-                    )}
+                    )
+                    }
                   </P>
 
                   <P>

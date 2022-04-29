@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
+
 
 import api from '../../services/api'
 
@@ -59,7 +59,7 @@ function PlanCalendar() {
     user: Yup.string().required('O usuário é obrigatório.'),
     machine: Yup.string().required('A máquina é obrigatória.'),
     test: Yup.string().required('O teste é obrigatório.'),
-    replay: Yup.string()
+    replay: Yup.number()
       .required(
         'Colocar quantas vezes deseja repetir este plano é obrigatório.'
       )
@@ -67,9 +67,9 @@ function PlanCalendar() {
     date: Yup.date().required(
       'Coloque uma data referência, como a última vez que o teste foi feito.'
     ),
-    frequency: Yup.string()
+    frequency: Yup.number()
       .required('A frequência a qual deseja fazer o teste é obrigatória')
-      .min(0, 'Não pode ser um número negativo'),
+      .min(1, 'Não pode ser zero nem um número negativo, coloque a quantidade de dias em que esse teste se repete ou iria se repetir'),
   })
 
   const {
@@ -88,6 +88,7 @@ function PlanCalendar() {
     let dateCounter = moment(planData.date)
     let dateLimit = moment(planData.date)
     dateLimit = dateLimit.add(planData.replay * planData.frequency, 'days')
+    console.log(dateLimit)
 
     const preview = []
     while (dateCounter.isSameOrBefore(dateLimit, 'day')) {
@@ -97,6 +98,8 @@ function PlanCalendar() {
         tests_id: planData.test,
         date: dateCounter.format('YYYY-MM-DD'),
       })
+      
+
       dateCounter = dateCounter.add(planData.frequency, 'days')
     }
     setPreview(preview)
@@ -169,7 +172,7 @@ function PlanCalendar() {
                 {tests &&
                   tests.map((test) => (
                     <option key={test.id} value={test.id}>
-                      {test.name}
+                      {test.name} - tolerância: {test.tolerance}
                     </option>
                   ))}
               </Select>

@@ -25,8 +25,8 @@ export const ContainerItens = styled.div`
     color: #000000;
     margin-bottom: 10px;
   }
-  input {
-    border: ${(props) => (props.error ? '2px solid #cc1717' : 'none')};
+/*   input {
+    border: ${(props) => props.error ? '2px solid #cc1717' : 'none'};
     width: 100%;
     height: 40px;
     background: #f7f7f7;
@@ -36,7 +36,7 @@ export const ContainerItens = styled.div`
     position: relative;
     padding: 10px 15px;
     margin-bottom: 15px;
-  }
+  } */
 `
 
 export const Select = styled.select`
@@ -76,11 +76,12 @@ export const Block = styled.div`
   }
 `
 export const ContainerCarousel = styled.div`
-  height: 60px;
+  /* height: 60px; */
   display: flex;
   align-items: center;
   justify-items: center;
   border-bottom: 2px solid #cad2d3;
+  padding: 5px;
 
   button.trash-btn {
     background: none;
@@ -101,6 +102,7 @@ export const P = styled.p`
   width: 150px;
   display: flex;
   justify-content: center;
+  margin: 0 10px;
 `
 export const Filters = styled.div`
   margin: 0 0 30px 0;

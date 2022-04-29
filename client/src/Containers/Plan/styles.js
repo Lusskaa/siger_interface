@@ -137,7 +137,7 @@ export const ContainerItens = styled.div `
         margin-bottom: 10px;
     }
     input{
-        border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
+        border: none ;
         width: 100%;
         height: 40px;
         background: #F7F7F7;
@@ -146,12 +146,11 @@ export const ContainerItens = styled.div `
         border: none;
         position: relative;
         padding: 10px 15px;
-        margin-bottom: 15px;
     }
 `
 
 export const Select = styled.select `
-    border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
+    border: none;
     width: 100%;
     height: 40px;
     background: #F7F7F7;
@@ -168,6 +167,7 @@ export const ErrorMessage = styled.p `
     font-size: 14px;
     line-height: 16px;
     color: #cc1717;
+    margin-top: 10px;
 `
 
 

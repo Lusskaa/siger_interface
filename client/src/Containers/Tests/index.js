@@ -149,6 +149,7 @@ function RegisterAndDeleteTests() {
                 <option>Non-IMRT</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
+                <option>TODAS</option>
               </Select>
               <ErrorMessage>
                 {errors.recommendedMachineType?.message}
@@ -167,12 +168,6 @@ function RegisterAndDeleteTests() {
                 O teste é funcional? Se sim, coloque no campo
                 toleância a palavra 'Funcional'
               </Lable>
-  {/*             <Input
-                placeholder="Confirme sua senha"
-                type="checkbox"
-                {...register("isfunctional")}
-                style={{ boxShadow: "none" }}
-              /> */}
 
               <Button type="submit" style={{ alignSelf: "flex-start" }}>
                 Cadastrar

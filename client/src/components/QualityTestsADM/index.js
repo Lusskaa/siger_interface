@@ -1,57 +1,59 @@
-import React, { useEffect, useState } from "react";
-import Carousel from "react-elastic-carousel";
+import React, { useEffect, useState } from 'react'
+import Carousel from 'react-elastic-carousel'
+import { DatePicker, Switch, Popconfirm } from 'antd'
+
 import {
   Container,
   ContainerItens,
   ContainerTests,
   ContainerTitles,
   P,
-} from "./styles";
+} from './styles'
 
-import Trash from "../../assets/trash.svg";
+import Trash from '../../assets/trash.svg'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
-import Title from "../Titles";
+import Title from '../Titles'
 
 function QualityTestsADM({ refresh = false }) {
-  const [tests, setTests] = useState();
-  const [loading, setLoading] = useState(true);
-  const user = localStorage.getItem("siger:userData");
+  const [tests, setTests] = useState()
+  const [loading, setLoading] = useState(true)
+  const user = localStorage.getItem('siger:userData')
 
   useEffect(() => {
     api
-      .get("/tests")
+      .get('/tests')
       .then(({ data }) => setTests(data))
-      .finally(() => setLoading(false));
-  }, [refresh]);
+      .finally(() => setLoading(false))
+  }, [refresh])
 
   async function deletetest(test_Id) {
-    await api.delete(`/tests/${test_Id}`); // deletando no back
+    await api.delete(`/tests/${test_Id}`) // deletando no back
 
-    const newTests = tests.filter((test) => test.id !== test_Id); // deletando no front
+    const newTests = tests.filter((test) => test.id !== test_Id) // deletando no front
 
-    setTests(newTests);
+    setTests(newTests)
   }
 
   return (
     <Container>
-      <Title style={{ width: "600px" }}>
-        {" "}
+      <Title style={{ width: '600px' }}>
+        {' '}
         Testes de controle de qualidade cadastrados
       </Title>
 
       <ContainerTests>
         <ContainerTitles>
-          <P style={{ fontWeight: "700" }}>Nome</P>
-          <P style={{ fontWeight: "700" }}>Tipo</P>
-          <P style={{ fontWeight: "700" }}>Tolerância</P>
-          <P style={{ fontWeight: "700" }}>Frequência recomendada</P>
-          <P style={{ fontWeight: "700" }}>Máquina recomendada</P>
+          <P style={{ fontWeight: '700' }}>Nome</P>
+          <P style={{ fontWeight: '700' }}>Tipo</P>
+          <P style={{ fontWeight: '700' }}>Tolerância</P>
+          <P style={{ fontWeight: '700' }}>Frequência recomendada</P>
+          <P style={{ fontWeight: '700' }}>Máquina recomendada</P>
           {JSON.parse(user).isAdm ? (
-            <P style={{ fontWeight: "700"/* , width: "45px"  */}}>Deletar</P>
+            <P style={{ fontWeight: '700' /* , width: "45px"  */ }}>Deletar</P>
           ) : (
-            ""
+            ''
           )}
         </ContainerTitles>
         {loading ? (
@@ -60,7 +62,7 @@ function QualityTestsADM({ refresh = false }) {
           <Carousel
             verticalMode
             itemsToShow={8}
-            style={{ width: "90%", justifySelf: "center" }}
+            style={{ width: '90%', justifySelf: 'center' }}
           >
             {tests &&
               tests.map((test) => (
@@ -71,20 +73,27 @@ function QualityTestsADM({ refresh = false }) {
                   <P>{test.recommendedFrequency}</P>
                   <P>{test.recommendedMachineType}</P>
 
-                  <button onClick={() => deletetest(test.id)}>
-                    {JSON.parse(user).isAdm ? (
-                      <img src={Trash} alt="lata de lixo" />
-                    ) : (
-                      ""
-                    )}
-                  </button>
+                  {JSON.parse(user).isAdm ? (
+                    <Popconfirm
+                      title="Tem certeza que deseja remover o teste?"
+                      onConfirm={() => deletetest(test.id)}
+                      okText="Sim"
+                      cancelText="Não"
+                    >
+                      <button>
+                        <img src={Trash} alt="lata de lixo" />
+                      </button>
+                    </Popconfirm>
+                  ) : (
+                    ''
+                  )}
                 </ContainerItens>
               ))}
           </Carousel>
         )}
       </ContainerTests>
     </Container>
-  );
+  )
 }
 
-export default QualityTestsADM;
+export default QualityTestsADM

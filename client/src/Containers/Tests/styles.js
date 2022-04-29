@@ -4,9 +4,8 @@ import styled from 'styled-components'
 
 export const Body = styled.div `
     height: 100%;
-    width: 100vw;
-
-    
+    width: 100%;
+ 
 `
 
 export const Header = styled.div `
