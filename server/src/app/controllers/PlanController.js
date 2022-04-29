@@ -12,25 +12,24 @@ import { Op } from 'sequelize'
 
 class PlanController {
   async store(request, response) {
-    try {
-      const transaction = async (transaction) => {
-        for (let i = 0; i < request.body.length; i++) {
-          const a = await planService.store(request.body[i])
-          await Plan.create(a, {
-            transaction,
-          })
-        }
+    const transaction = async (transaction) => {
+      for (let i = 0; i < request.body.length; i++) {
+        const a = await planService.store(request.body[i])
+        await Plan.create(a, {
+          transaction,
+        })
       }
-
-      return await db
-        .sequelize()
-        .transaction(transaction)
-        .then((_) => response.status(201).send())
-    } catch (error) {
-      if (error.status && error.status === 400) {
-        return response.status(400).json({ error: error.message })
-      } else throw error
     }
+
+    return await db
+      .sequelize()
+      .transaction(transaction)
+      .then((_) => response.status(201).send())
+      .catch((err) =>
+        response
+          .status(err.status ? err.status : 500)
+          .json({ error: err.message })
+      )
   }
 
   async index(request, response) {
@@ -76,8 +75,22 @@ class PlanController {
     return response.json(plan)
   }
 
-  async update(request, response) {}
+  async setStatus(request, response) {
+    const plan = await Plan.findOne({ where: { id: request.params.planId } })
+    if (plan) {
+      await plan.update({ status: !plan.status })
+    }
 
-  async delete(request, response) {}
+    return response.status(204).send()
+  }
+
+  async delete(request, response) {
+    const plan = await Plan.findOne({ where: { id: request.params.planId } })
+    if (plan) {
+      await plan.destroy()
+    }
+
+    return response.status(204).send()
+  }
 }
 export default new PlanController()

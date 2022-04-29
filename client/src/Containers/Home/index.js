@@ -25,25 +25,17 @@ function Home() {
   );
 
   useEffect(() => {
-    const promises = [api.get("/tests"), api.get("/machines")];
-    if (!!currentUser.isAdm) {
-      promises.push(api.get("/users"));
-    }
-
-    Promise.all(promises).then((responses) => {
+     
+    Promise.all([api.get("/tests"), api.get("/machines"), api.get("/users")]).then((responses) => {
       setTests(responses[0].data);
       setmachines(responses[1].data);
-
-      if (!!currentUser.isAdm) {
-        setusers(responses[2].data);
-      }
+      setusers(responses[2].data);
     });
   }, []);
 
   return (
     <Container>
       <HeaderPage />
-      <LinkPage />
 
       <TitlePage>Home</TitlePage>
       <ContainerWelcome>

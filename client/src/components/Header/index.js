@@ -1,16 +1,58 @@
-import React from "react"
-import {Header, ImgLogoSuperior} from './styles'
+import React from 'react'
+import {
+  Header,
+  ImgLogoSuperior,
+  ContainerRight,
+  ImgUserIcon,
+  ContainerLeft,
+  ContainerMiddle,
+  ContainerText,
+  GetOutLink,
+  Line,
+} from './styles'
 
 import LogoSiger from '../../assets/logoSiger.svg'
+import userIcon from '../../assets/userIcon.svg'
+import homeIcon from '../../assets/homeIcon.svg'
+import LinkPage from '../LinkPages'
 
-function HeaderPage () {
-    return  (
-        <Header> 
-            <h1>Sistema Integrado de gerenciamento em Radioterapia </h1>
+import { useUser } from '../../hooks/UserContext'
 
-            <ImgLogoSuperior src={LogoSiger} alt="Logo Siger" />
-        </Header>  
-    )
+import { useHistory } from 'react-router-dom'
+
+function HeaderPage() {
+  const { push } = useHistory()
+
+  const user = localStorage.getItem('siger:userData')
+
+  const { logout } = useUser()
+
+  const logoutUser = () => {
+    logout()
+    push('/login')
+  }
+
+  return (
+    <Header>
+      <ContainerLeft>
+        <h1>Sistema Integrado de gerenciamento em Radioterapia </h1>
+      </ContainerLeft>
+
+      <ContainerMiddle>
+        <LinkPage />
+      </ContainerMiddle>
+
+      <ContainerRight>
+        <Line />
+        <ImgLogoSuperior src={LogoSiger} alt="Logo Siger" />
+        <ImgUserIcon src={userIcon} alt="User Icon" />
+        <ContainerText>
+          <p>Olá, {JSON.parse(user).name.split(' ', 1)}</p>
+          <GetOutLink onClick={logoutUser}>Sair</GetOutLink>
+        </ContainerText>
+      </ContainerRight>
+    </Header>
+  )
 }
 
 export default HeaderPage

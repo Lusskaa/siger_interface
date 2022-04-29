@@ -1,16 +1,62 @@
-import React from "react"
-import {ContainerLinks} from './styles'
-import { Link} from 'react-router-dom'
+import React from 'react'
+import { ContainerLinks, Link } from './styles'
+import { useHistory } from 'react-router-dom'
 
-function LinkPage () {
-    return  (
-        <ContainerLinks> 
-            <Link className="links" to="/cadDelMachines" >Cadastrar/Deletar máquina</Link>
-            <Link className="links" to="/cadDelTestes">Cadastrar/Deletar teste</Link>
-            <Link className="links" to="/upDelUsers">Ativar/Deletar usuário</Link>
-            <Link className="links" to="/createPlan">Criar Planejamento</Link>
-        </ContainerLinks>  
-    )
+function LinkPage() {
+  const {
+    push,
+    location: { pathname },
+  } = useHistory()
+
+  const user = localStorage.getItem('siger:userData')
+
+  return (
+    <ContainerLinks>
+      <Link
+        className="links"
+        onClick={() => push('/')}
+        isActive={pathname === '/'}
+      >
+        Home
+      </Link>
+
+      <Link
+        className="links"
+        onClick={() => push('/createPlan')}
+        isActive={pathname === '/createPlan'}
+      >
+        Planejamento
+      </Link>
+
+      {JSON.parse(user).isAdm && (
+        <>
+          <Link
+            className="links"
+            onClick={() => push('/cadDelMachines')}
+            isActive={pathname === '/cadDelMachines'}
+          >
+            Máquinas
+          </Link>
+
+          <Link
+            className="links"
+            onClick={() => push('/cadDelTestes')}
+            isActive={pathname === '/cadDelTestes'}
+          >
+            Testes
+          </Link>
+
+          <Link
+            className="links"
+            onClick={() => push('/upDelUsers')}
+            isActive={pathname === '/upDelUsers'}
+          >
+            Usuários
+          </Link>
+        </>
+      )}
+    </ContainerLinks>
+  )
 }
 
 export default LinkPage

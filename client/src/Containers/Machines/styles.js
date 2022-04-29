@@ -9,21 +9,6 @@ export const Body = styled.div `
     
 `
 
-export const Header = styled.div `
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #CAD2D3;
-    align-items: center;
-
-    h1{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 25px;
-        line-height: 29px;
-        color: #000000;
-        margin-left: 34px;
-    }
-`
 
 export const Main = styled.div `
     display: flex;
@@ -71,7 +56,6 @@ export const ImgLogo = styled.img `
 
 export const ContainerRegister = styled.div `
     width: 954px;
-    height: 400px;
     background: rgba(242, 191, 145, 0.3);
     border-radius: 30px;
     display: flex;
@@ -80,27 +64,9 @@ export const ContainerRegister = styled.div `
     align-items: center;
     gap: 100px;
     margin-bottom: 40px;
-`
-export const TitleSingUp = styled.p `
-    width: 200px;
-    border-bottom: 3px solid #CAD2D3;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-    margin-left: 50px;
-    align-self: flex-start;
-
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 25px;
+    padding-bottom: 20px;
 `
 
-export const ImgLogoSuperior = styled.img `
-    width: 73px;
-    height: 68px;
-    margin: 5px 30px 5px 10px;
-`
 export const Lable = styled.p `
     align-self: flex-start;
     font-style: normal;
@@ -141,7 +107,7 @@ export const Input = styled.input `
     background: #F7F7F7;
     box-shadow: -4px 4px 8px;
     border-radius: 10px;
-    border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
+    border: ${props => props.error ? '2px solid #cc1717' : 'none'};
     position: relative;
     padding: 10px 15px;
 
@@ -189,67 +155,11 @@ export const ErrorMessage = styled.p `
     font-size: 14px;
     line-height: 16px;
     color: #cc1717;
+    margin-top:10px;
 `
 
 
 
-export const SignInLink = styled.p `
-    margin-top: 0;
-    margin-bottom: 62px;
-    text-align: center;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 18px;
-    color: #969696;
-    align-self: flex-start;
-
-    a {
-        cursor: pointer;
-        
-    }
-
-    strong {
-    color: #323232;
-}
-`
-export const Footer = styled.div `
-    background: #0D0D0D;
-    width: 100%;
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 40px;
-
-
-    
-    h4 {
-    color: #FFFFFF;
-    display: inline-block;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    margin-bottom: 10px;
-    margin-left: 50px;
-}
-
-    bottom: 0;
-    position: relative;
-
- 
-
-`
-export const ContainerImages = styled.div `
-    height: 135px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap:wrap;
-    margin-left: 50px;
-`
 
 
 export const Container = styled.div`

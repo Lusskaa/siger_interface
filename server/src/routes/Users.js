@@ -8,14 +8,15 @@ import authMiddlaware from '../app/middlewares/auth'
 import PlanValidation from '../app/validation/Plan'
 const routes = new Router()
 
+routes.get('/', authMiddlaware.isAuthenticated, UserController.index) // LIST ALL
+
 routes.use(authMiddlaware.isAdm) // todas as rotas que estiverem abaixo desse midd vai SER chamaDO
 
-routes.get('/', UserController.index) // LIST ALL
 routes.patch('/:id/status', UserController.setStatus) // UPADATE ACTIVE
 routes.delete('/:id', UserController.delete) // REMOVE
 
 routes.post('/:userId/plans', PlanValidation.store, PlanController.store) // colocar validation
-routes.put('/:userId/plans', PlanValidation.update, PlanController.update) // colocar validation
-routes.delete('/:userId/plans', PlanValidation.destroy, PlanController.delete)
+routes.patch('/:userId/plans/:planId/status', PlanController.setStatus) // colocar validation
+routes.delete('/:userId/plans/:planId', PlanController.delete)
 
 export default routes

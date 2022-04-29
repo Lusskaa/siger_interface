@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
-import { DatePicker } from "antd";
-import moment from "moment";
-import Trash from "../../assets/trash.svg";
-import checkTrue from "../../assets/checkTrue.svg";
-import checkNull from "../../assets/checkNull.svg";
+import { DatePicker, Switch, Popconfirm } from 'antd' // Popover
+import moment from 'moment'
+import Trash from '../../assets/trash.svg'
+import checkTrue from '../../assets/checkTrue.svg'
+import checkNull from '../../assets/checkNull.svg'
+
+import { toast } from 'react-toastify'
 
 import {
   Label,
@@ -17,105 +19,119 @@ import {
   Filters,
   Block,
   ConteinerFilters,
-} from "./styles";
+} from './styles'
 
-import Carousel from "react-elastic-carousel";
+import Carousel from 'react-elastic-carousel'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
-import Title from "../../components/Titles";
+import Title from '../../components/Titles'
 
 function Plans({ users, tests, machines, refresh }) {
-  const { RangePicker } = DatePicker;
+  const { RangePicker } = DatePicker
 
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("siger:userData"))
-  );
+    JSON.parse(localStorage.getItem('siger:userData'))
+  )
 
-  const [loading, setLoading] = useState([]);
-  const [plans, setPlans] = useState([]);
+  const [loading, setLoading] = useState([])
+  const [plans, setPlans] = useState([])
   const [filters, setFilters] = useState({
     dates: [],
-    user: "",
-    test: "",
-    machine: "",
-  });
+    user: '',
+    test: '',
+    machine: '',
+  })
 
   useEffect(() => {
     api
-      .get("/plans")
+      .get('/plans')
       .then(({ data }) => setPlans(data))
-      .finally(() => setLoading(false));
-  }, [refresh]);
+      .finally(() => setLoading(false))
+  }, [refresh])
 
   const filterDates = async (dates) => {
-    const start = dates && dates.length ? dates[0].format("YYYY-MM-DD") : null;
-    const end = dates && dates.length ? dates[1].format("YYYY-MM-DD") : null;
+    const start = dates && dates.length ? dates[0].format('YYYY-MM-DD') : null
+    const end = dates && dates.length ? dates[1].format('YYYY-MM-DD') : null
     setFilters({
       ...filters,
       start,
       end,
-    });
+    })
 
-    const { data: plans } = await api.get("/plans/", {
+    const { data: plans } = await api.get('/plans/', {
       params: { ...filters, start, end },
-    });
-    setPlans(plans);
-  };
-
+    })
+    setPlans(plans)
+  }
   const filterUser = async (user) => {
     setFilters({
       ...filters,
       user,
-    });
+    })
 
-    const { data: plans } = await api.get("/plans/", {
+    const { data: plans } = await api.get('/plans/', {
       params: { ...filters, user },
-    });
-    setPlans(plans);
-  };
+    })
+    setPlans(plans)
+  }
   const filterTest = async (test) => {
     setFilters({
       ...filters,
       test,
-    });
+    })
 
-    const { data: plans } = await api.get("/plans/", {
+    const { data: plans } = await api.get('/plans/', {
       params: { ...filters, test },
-    });
-    setPlans(plans);
-  };
+    })
+    setPlans(plans)
+  }
   const filterMachine = async (machine) => {
     setFilters({
       ...filters,
       machine,
-    });
+    })
 
-    const { data: plans } = await api.get("/plans/", {
+    const { data: plans } = await api.get('/plans/', {
       params: { ...filters, machine },
-    });
-    setPlans(plans);
-  };
-
-  async function deletePlan(plan_Id) {
-    // Tentar colocar mensagem de erro para quando deletar um isADm
-    /* await api.delete(`/plans/${plan_Id}`); // deletando no back
-    
-        const newPlans = users.filter((plan) => plan.id !== plan_Id); // deletando no front
-    
-        setusers(newPlans); */
+    })
+    setPlans(plans)
   }
 
-  async function updatePlan(plan_Id /* , allUsers */) {
-    /* await api.put(`/users/${user_Id}/status`);  */
-    // atualizando no back
-    /*         await api.ger
-      
-            const newusers = users.filter( user=> user.id  );  */
-    /* const { data: plans } = await api.get("/plans");
-        setusers(data); */
-    // startUp();
-    /* setusers(newusers ); */
+  async function deletePlan(plan) {
+    await api
+      .delete(
+        `${!!currentUser.isAdm ? `/users/${plan.users_id}` : ''}/plans/${
+          plan.id
+        }`
+      )
+      .then(async () => {
+        toast.success('Plano removido com sucesso')
+
+        const { data: plans } = await api.get('/plans/', {
+          params: filters,
+        })
+        setPlans(plans)
+      })
+  }
+
+  async function setPlanStatus(plan) {
+    await api
+      .patch(
+        `${!!currentUser.isAdm ? `/users/${plan.users_id}` : ''}/plans/${
+          plan.id
+        }/status`
+      )
+      .then(async () => {
+        toast.success(
+          `Teste ${plan.status ? 'desfeito' : 'realizado'} com sucesso`
+        )
+
+        const { data: plans } = await api.get('/plans/', {
+          params: filters,
+        })
+        setPlans(plans)
+      })
   }
 
   return (
@@ -175,12 +191,13 @@ function Plans({ users, tests, machines, refresh }) {
       </Filters>
       <ContainerPlans>
         <ContainerTitles>
-          <P style={{ fontWeight: "700" }}>Usuário</P>
-          <P style={{ fontWeight: "700" }}>Teste</P>
-          <P style={{ fontWeight: "700" }}>Tolerância</P>
-          <P style={{ fontWeight: "700" }}>Máquina</P>
-          <P style={{ fontWeight: "700" }}>Data</P>
-          <P style={{ fontWeight: "700" }}>Opções</P>
+          <P style={{ fontWeight: '700' }}>Usuário</P>
+          <P style={{ fontWeight: '700' }}>Teste</P>
+          <P style={{ fontWeight: '700' }}>Tolerância</P>
+          <P style={{ fontWeight: '700' }}>Máquina</P>
+          <P style={{ fontWeight: '700' }}>Data</P>
+          <P style={{ fontWeight: '700' }}>Feito?</P>
+          <P style={{ fontWeight: '700' }}>Opções</P>
         </ContainerTitles>
 
         {loading ? (
@@ -189,7 +206,7 @@ function Plans({ users, tests, machines, refresh }) {
           <Carousel
             verticalMode
             itemsToShow={8}
-            style={{ width: "90%", justifySelf: "center" }}
+            style={{ width: '90%', justifySelf: 'center' }}
           >
             {plans.length != 0 &&
               plans.map((plan) => (
@@ -198,30 +215,36 @@ function Plans({ users, tests, machines, refresh }) {
                   <P>{plan.tests.name}</P>
                   <P>{plan.tests.tolerance}</P>
                   <P>{plan.machines.name}</P>
-                  <P>{moment(plan.date, "YYYY-MM-DD").format("DD/MM/YYYY")}</P>
+                  <P>{moment(plan.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}</P>
                   <P>
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
-                      <>
-                        <button>
-                          {plan.status ? (
-                            <img
-                              className="addIcon" // check verde ou icone que deixe claro que está ativado
-                              src={checkTrue}
-                              alt="check true icon"
-                            />
-                          ) : (
-                            <img
-                              className="addIcon" // X vermelho ou icone que deixe claro que está ativado
-                              src={checkNull}
-                              alt="check null icon"
-                            />
-                          )}
-                        </button>
-                        <button onClick={() => deletePlan(plan.id)}>
+                      <Popconfirm
+                        title={`Tem certeza que deseja ${
+                          plan.status ? 'desfazer' : 'realizar'
+                        } este teste?`}
+                        onConfirm={() => setPlanStatus(plan)}
+                        okText="Sim"
+                        cancelText="Não"
+                      >
+                        <Switch checked={plan.status} />
+                      </Popconfirm>
+                    )}
+                  </P>
+
+                  <P>
+                    {(!!currentUser.isAdm ||
+                      currentUser.id === plan.users_id) && (
+                      <Popconfirm
+                        title="Tem certeza que deseja remover o plano?"
+                        onConfirm={() => deletePlan(plan)}
+                        okText="Sim"
+                        cancelText="Não"
+                      >
+                        <button className="trash-btn">
                           <img src={Trash} alt="lata de lixo" />
                         </button>
-                      </>
+                      </Popconfirm>
                     )}
                   </P>
                 </ContainerCarousel>
@@ -230,7 +253,7 @@ function Plans({ users, tests, machines, refresh }) {
         )}
       </ContainerPlans>
     </Container>
-  );
+  )
 }
 
-export default Plans;
+export default Plans

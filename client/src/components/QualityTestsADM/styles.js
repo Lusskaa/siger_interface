@@ -7,23 +7,26 @@ export const Container = styled.div`
 
 `
 export const ContainerItens = styled.div`
-    height: 50px;
     display: flex;
     align-items: center;
     justify-items: center;
     border-bottom: 2px solid #CAD2D3;
+    padding: 10px 0;
 
     button {
         background: none;
         border: none;
         cursor: pointer;
+        width: 180px ;
     }
 
 `
 export const P = styled.div `
-        width: 200px ;
+        width: 180px ;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+        
 
 `
 export const ContainerTests = styled.div`

@@ -11,11 +11,11 @@ import { v4 } from 'uuid'
 import User from '../entities/models/User'
 
 class UserController {
-  async store (request, response) {
+  async store(request, response) {
     const { name, email, password, isActive } = request.body
 
     const userExists = await User.findOne({
-      where: { email }
+      where: { email },
     }) // fazendo uma query no banco para procurar o email
 
     if (userExists) {
@@ -27,7 +27,7 @@ class UserController {
       name,
       email,
       password,
-      isActive
+      isActive,
     })
 
     /* return response.json(user) AQUI RETORNARÍAMOS TUDO, NO ENTANTO N QUEREMOS QUE NOSSO FRONT END TENHA A INFO DE SENHA */
@@ -36,7 +36,7 @@ class UserController {
       .json({ id: user.id, name, email, isActive: user.isActive })
   }
 
-  async setStatus (request, response) {
+  async setStatus(request, response) {
     const { id } = request.params
 
     const isAdm = process.env.ADMS.split(',').includes(id)
@@ -54,20 +54,20 @@ class UserController {
 
     await User.update(
       {
-        isActive: !user.isActive
+        isActive: !user.isActive,
       },
       { where: { id } }
     )
 
-    return response.status(204).json()
+    return response.status(204).send()
   }
 
-  async index (request, response) {
+  async index(request, response) {
     const user = await User.findAll()
     return response.json(user)
   }
 
-  async delete (request, response) {
+  async delete(request, response) {
     const { id } = request.params
 
     const isAdm = process.env.ADMS.split(',').includes(id)
@@ -83,7 +83,7 @@ class UserController {
     }
 
     await User.destroy({
-      where: { id }
+      where: { id },
     })
     return response.status(204).json()
   }

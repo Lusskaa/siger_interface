@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import authConfig from '../../config/auth'
 require('dotenv').config()
 
+// eslint-disable-next-line import/first
 import User from '../entities/models/User'
 
 const authenticate = (authToken) => {
@@ -16,7 +17,7 @@ const authenticate = (authToken) => {
 
     return {
       id: decoded.id,
-      name: decoded.name,
+      name: decoded.name
     }
   } catch (err) {
     throw new Error('token is invalid')
@@ -28,7 +29,7 @@ const isAdm = async (request, response, next) => {
     request.user = authenticate(request.headers.authorization)
 
     const user = await User.findOne({
-      where: { id: request.user.id },
+      where: { id: request.user.id }
     })
     if (!user || !user.isActive) {
       return response
@@ -53,7 +54,7 @@ const isAuthenticated = async (request, response, next) => {
     request.user = authenticate(request.headers.authorization)
 
     const user = await User.findOne({
-      where: { id: request.user.id },
+      where: { id: request.user.id }
     })
     if (!user || !user.isActive) {
       return response
@@ -69,5 +70,5 @@ const isAuthenticated = async (request, response, next) => {
 
 export default {
   isAuthenticated,
-  isAdm,
+  isAdm
 }

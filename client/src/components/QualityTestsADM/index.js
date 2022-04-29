@@ -49,7 +49,7 @@ function QualityTestsADM({ refresh = false }) {
           <P style={{ fontWeight: "700" }}>Frequência recomendada</P>
           <P style={{ fontWeight: "700" }}>Máquina recomendada</P>
           {JSON.parse(user).isAdm ? (
-            <P style={{ fontWeight: "700", width: "45px" }}>Deletar</P>
+            <P style={{ fontWeight: "700"/* , width: "45px"  */}}>Deletar</P>
           ) : (
             ""
           )}

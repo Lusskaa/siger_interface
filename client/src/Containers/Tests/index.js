@@ -6,15 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-import Carousel from "react-elastic-carousel";
-
-import Trash from "../../assets/trash.svg";
 
 import api from "../../services/api";
 
-import Title from "../../components/Titles";
 
-import { useHistory } from "react-router-dom";
 
 import HeaderPage from "../../components/Header";
 import LinkPage from "../../components/LinkPages";
@@ -36,19 +31,14 @@ import {
   ErrorMessage,
   ContainerRegister,
   Lable,
-  Select,
-  Container,
-  ContainerCarousel,
-  ContainerTests,
-  ContainerTitles,
-  P,
+  Select
 } from "./styles";
 
 function RegisterAndDeleteTests() {
   const [refreshTable, setRefreshTable] = useState(false);
 
   const schema = Yup.object().shape({
-    name: Yup.string().required("O seu nome é obrigatório"),
+    name: Yup.string().required("O nome é obrigatório"),
     tolerance: Yup.string().required("A Tolerância é obrigatória"),
     type: Yup.string().required("O tipo de teste é obrigatório"),
     recommendedFrequency: Yup.string().required(
@@ -103,14 +93,10 @@ function RegisterAndDeleteTests() {
   return (
     <Body>
       <HeaderPage />
-      <LinkPage />
 
       <Main>
-        <Link to="/" className="home">
-          <strong>Voltar para Home</strong>
-        </Link>
-        <TitlePage style={{ width: "400px" }}>
-          Cadastrar e excluir testes (QT)
+        <TitlePage style={{ width: "600px" }}>
+          Cadastrar testes de controle de qualidade
         </TitlePage>
 
         <ContainerRegister>
@@ -129,6 +115,7 @@ function RegisterAndDeleteTests() {
               <Lable>Tipo</Lable>
 
               <Select {...register("type")} error={errors.type?.message}>
+                <option/>
                 <option>Dosimétrico</option>
                 <option>Mecânico</option>
                 <option>Gating respiratório</option>
@@ -137,12 +124,17 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>{errors.type?.message}</ErrorMessage>
 
               <Lable>Frequência Recomendada</Lable>
-              <Input
-                placeholder="Diário, Semanal, Mensal, Anual"
-                type="text"
-                {...register("recommendedFrequency")}
-                error={errors.recommendedFrequency?.message}
-              />
+  
+              <Select {...register("recommendedFrequency")} error={errors.recommendedFrequency?.message}>
+                <option/>
+                <option>Diário</option>
+                <option>Semanal</option>
+                <option>Mensal</option>
+                <option>Bimestral</option>
+                <option>Trimestral</option>
+                <option>Semestral</option>
+                <option>Anual</option>
+              </Select>
               <ErrorMessage>
                 {errors.recommendedFrequency?.message}
               </ErrorMessage>
@@ -153,6 +145,7 @@ function RegisterAndDeleteTests() {
                 {...register("recommendedMachineType")}
                 error={errors.recommendedMachineType?.message}
               >
+                <option/>
                 <option>Non-IMRT</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
@@ -171,15 +164,15 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>{errors.tolerance?.message}</ErrorMessage>
 
               <Lable>
-                O teste é funcional? Se for, marque o box e acrescente no campo
-                toleância 'Funcional'
+                O teste é funcional? Se sim, coloque no campo
+                toleância a palavra 'Funcional'
               </Lable>
-              <Input
+  {/*             <Input
                 placeholder="Confirme sua senha"
                 type="checkbox"
                 {...register("isfunctional")}
                 style={{ boxShadow: "none" }}
-              />
+              /> */}
 
               <Button type="submit" style={{ alignSelf: "flex-start" }}>
                 Cadastrar

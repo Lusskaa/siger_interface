@@ -9,26 +9,25 @@ export const ContainerLinks = styled.div `
     gap: 20px;
     
     justify-content: center;
-    margin: 20px 0;
+    padding-right: 20px;
+
+`
 
 
-    .links {
-        color: black;
-        background: #CAD2D3;
+export const Link = styled.a `
+        color:${props => props.isActive ? "blue" : "black"} ;
+        cursor: pointer;
+        text-decoration:none;
         display: flex;
         align-items: center;
         justify-content: center;
-        text-decoration:none;
-        cursor: pointer;
         height: 40px;
-        width: 240px;
-
-        border-radius: 10px;
         border: none;
         font-style: normal;
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 18px;
+        font-weight: ${props => props.isActive ? 'bold' : 'normal'};
+        font-size: 16px;
+        line-height: 19px;
+        
 
         &:hover{
             opacity: 0.8;
@@ -36,6 +35,5 @@ export const ContainerLinks = styled.div `
         &:active{
             opacity: 0.6;
         }
-    }
-`
 
+`

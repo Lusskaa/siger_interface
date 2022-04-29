@@ -32,9 +32,5 @@ class PlanService {
       users_id,
     }
   }
-
-  async update(request, response) {}
-
-  async delete(request, response) {}
 }
 export default new PlanService()
