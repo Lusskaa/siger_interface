@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 const login = async (request, response, next) => {
   const schema = Yup.object().shape({
     email: Yup.string().email().required(),
-    password: Yup.string().required().min(6),
+    password: Yup.string().required().min(6)
   })
 
   try {
@@ -15,5 +15,5 @@ const login = async (request, response, next) => {
 }
 
 export default {
-  login,
+  login
 }

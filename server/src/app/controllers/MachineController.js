@@ -2,11 +2,11 @@ import { v4 } from 'uuid'
 import Machine from '../entities/models/Machine'
 
 class MachineController {
-  async store(request, response) {
+  async store (request, response) {
     const { name, type } = request.body
 
     const machineExists = await Machine.findOne({
-      where: { name, type },
+      where: { name, type }
     })
 
     if (machineExists) {
@@ -16,18 +16,18 @@ class MachineController {
     const machine = await Machine.create({
       id: v4(),
       name,
-      type,
+      type
     })
 
     return response.status(201).json(machine)
   }
 
-  async index(request, response) {
+  async index (request, response) {
     const machine = await Machine.findAll()
     return response.json(machine)
   }
 
-  async delete(request, response) {
+  async delete (request, response) {
     const { id } = request.params
 
     const machine = await Machine.findByPk(id)
@@ -37,7 +37,7 @@ class MachineController {
     }
 
     await Machine.destroy({
-      where: { id },
+      where: { id }
     })
     return response.status(204).json()
   }

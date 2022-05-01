@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import { useForm } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 
+import api from '../../services/api'
 
-import api from "../../services/api";
+import HeaderPage from '../../components/Header'
 
+import Button from '../../components/Button'
+import TitlePage from '../../components/Titles'
+import QualityTestsADM from '../../components/QualityTestsADM'
 
-
-import HeaderPage from "../../components/Header";
-import LinkPage from "../../components/LinkPages";
-
-import Button from "../../components/Button";
-import TitlePage from "../../components/Titles";
-import QualityTestsADM from "../../components/QualityTestsADM";
-
-import LogoSiger from "../../assets/logoSiger.svg";
+import LogoSiger from '../../assets/logoSiger.svg'
 
 import {
   Body,
@@ -31,23 +26,23 @@ import {
   ErrorMessage,
   ContainerRegister,
   Lable,
-  Select
-} from "./styles";
+  Select,
+} from './styles'
 
 function RegisterAndDeleteTests() {
-  const [refreshTable, setRefreshTable] = useState(false);
+  const [refreshTable, setRefreshTable] = useState(false)
 
   const schema = Yup.object().shape({
-    name: Yup.string().required("O nome é obrigatório"),
-    tolerance: Yup.string().required("A Tolerância é obrigatória"),
-    type: Yup.string().required("O tipo de teste é obrigatório"),
+    name: Yup.string().required('O nome é obrigatório'),
+    tolerance: Yup.string().required('A Tolerância é obrigatória'),
+    type: Yup.string().required('O tipo de teste é obrigatório'),
     recommendedFrequency: Yup.string().required(
-      "A frequência recomendada do teste é obrigatória"
+      'A frequência recomendada do teste é obrigatória'
     ),
     recommendedMachineType: Yup.string().required(
-      "A recomendação de máquina é obrigatória"
+      'A recomendação de máquina é obrigatória'
     ),
-  });
+  })
 
   const {
     register,
@@ -56,12 +51,12 @@ function RegisterAndDeleteTests() {
     reset,
   } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
   const onSubmit = async (testData) => {
     try {
       const { status } = await api.post(
-        "tests",
+        'tests',
         {
           name: testData.name,
           type: testData.type,
@@ -71,31 +66,31 @@ function RegisterAndDeleteTests() {
           isfunctional: testData.isfunctional,
         },
         { validateStatus: () => true }
-      );
+      )
 
       if (status === 201 || status === 200) {
-        toast.success("Teste criado com sucesso");
+        toast.success('Teste criado com sucesso')
       } else if (status === 400) {
         toast.error(
-          "Teste já cadastrado, para o mesmo nome nem a tolerância nem a frequência deve ser a mesma"
-        );
+          'Teste já cadastrado, para o mesmo nome nem a tolerância nem a frequência deve ser a mesma'
+        )
       } else {
-        throw new Error();
+        throw new Error()
       }
 
       reset()
-      setRefreshTable(!refreshTable);
+      setRefreshTable(!refreshTable)
     } catch (err) {
-      toast.error("Falha no sistema, tente novamente");
+      toast.error('Falha no sistema, tente novamente')
     }
-  };
+  }
 
   return (
     <Body>
       <HeaderPage />
 
       <Main>
-        <TitlePage style={{ width: "600px" }}>
+        <TitlePage style={{ width: '600px' }}>
           Cadastrar testes de controle de qualidade
         </TitlePage>
 
@@ -107,15 +102,15 @@ function RegisterAndDeleteTests() {
               <Input
                 type="text"
                 placeholder="Nome do teste"
-                {...register("name")}
+                {...register('name')}
                 error={errors.name?.message}
               />
               <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
               <Lable>Tipo</Lable>
 
-              <Select {...register("type")} error={errors.type?.message}>
-                <option/>
+              <Select {...register('type')} error={errors.type?.message}>
+                <option />
                 <option>Dosimétrico</option>
                 <option>Mecânico</option>
                 <option>Gating respiratório</option>
@@ -124,9 +119,12 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>{errors.type?.message}</ErrorMessage>
 
               <Lable>Frequência Recomendada</Lable>
-  
-              <Select {...register("recommendedFrequency")} error={errors.recommendedFrequency?.message}>
-                <option/>
+
+              <Select
+                {...register('recommendedFrequency')}
+                error={errors.recommendedFrequency?.message}
+              >
+                <option />
                 <option>Diário</option>
                 <option>Semanal</option>
                 <option>Mensal</option>
@@ -142,10 +140,10 @@ function RegisterAndDeleteTests() {
               <Lable> Maquina recomendada </Lable>
 
               <Select
-                {...register("recommendedMachineType")}
+                {...register('recommendedMachineType')}
                 error={errors.recommendedMachineType?.message}
               >
-                <option/>
+                <option />
                 <option>Non-IMRT</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
@@ -159,17 +157,17 @@ function RegisterAndDeleteTests() {
               <Input
                 placeholder="Coloque aqui a(s) tolerância(s) de seu teste"
                 type="text"
-                {...register("tolerance")}
+                {...register('tolerance')}
                 error={errors.tolerance?.message}
               />
               <ErrorMessage>{errors.tolerance?.message}</ErrorMessage>
 
               <Lable>
-                O teste é funcional? Se sim, coloque no campo
-                toleância a palavra 'Funcional'
+                O teste é funcional? Se sim, coloque no campo toleância a
+                palavra 'Funcional'
               </Lable>
 
-              <Button type="submit" style={{ alignSelf: "flex-start" }}>
+              <Button type="submit" style={{ alignSelf: 'flex-start' }}>
                 Cadastrar
               </Button>
             </form>
@@ -181,6 +179,6 @@ function RegisterAndDeleteTests() {
         <QualityTestsADM refresh={refreshTable} />
       </Main>
     </Body>
-  );
+  )
 }
-export default RegisterAndDeleteTests;
+export default RegisterAndDeleteTests

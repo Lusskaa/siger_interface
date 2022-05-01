@@ -5,7 +5,7 @@ export const Header = styled.div`
   justify-content: space-between;
   border-bottom: 2px solid #cad2d3;
   align-items: center;
-  width: 100%/* 150vh */;
+  width: 100% ;
   background-color: #ffffff;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
   height: 90px;

@@ -1,31 +1,31 @@
 import Sequelize, { Model } from 'sequelize'
 
 class Plan extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init(
       {
         date: Sequelize.DATEONLY,
-        status: Sequelize.BOOLEAN,
+        status: Sequelize.BOOLEAN
       },
       {
-        sequelize,
+        sequelize
       }
     )
     return this
   }
 
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.Test, {
       foreignKey: 'tests_id',
-      as: 'tests',
+      as: 'tests'
     })
     this.belongsTo(models.Machine, {
       foreignKey: 'machines_id',
-      as: 'machines',
+      as: 'machines'
     })
     this.belongsTo(models.User, {
       foreignKey: 'users_id',
-      as: 'users',
+      as: 'users'
     })
   }
 }

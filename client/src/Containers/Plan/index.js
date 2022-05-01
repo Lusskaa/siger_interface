@@ -5,7 +5,6 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
 
-
 import api from '../../services/api'
 
 import HeaderPage from '../../components/Header'
@@ -69,7 +68,10 @@ function PlanCalendar() {
     ),
     frequency: Yup.number()
       .required('A frequência a qual deseja fazer o teste é obrigatória')
-      .min(1, 'Não pode ser zero nem um número negativo, coloque a quantidade de dias em que esse teste se repete ou iria se repetir'),
+      .min(
+        1,
+        'Não pode ser zero nem um número negativo, coloque a quantidade de dias em que esse teste se repete ou iria se repetir'
+      ),
   })
 
   const {
@@ -98,7 +100,6 @@ function PlanCalendar() {
         tests_id: planData.test,
         date: dateCounter.format('YYYY-MM-DD'),
       })
-      
 
       dateCounter = dateCounter.add(planData.frequency, 'days')
     }

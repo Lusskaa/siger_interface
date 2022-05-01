@@ -10,7 +10,7 @@ const store = async (request, response, next) => {
     recommendedFrequency: Yup.string().required(),
     recommendedMachineType: Yup.string().required().oneOf(machineTypesEnum),
     description: Yup.string(),
-    tolerance: Yup.string().required(),
+    tolerance: Yup.string().required()
   })
 
   try {
@@ -22,5 +22,5 @@ const store = async (request, response, next) => {
 }
 
 export default {
-  store,
+  store
 }

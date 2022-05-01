@@ -4,7 +4,7 @@ import TestType from '../enum/TestType'
 import MachineType from '../enum/MachineType'
 
 class Test extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
@@ -12,10 +12,10 @@ class Test extends Model {
         recommendedFrequency: Sequelize.STRING,
         recommendedMachineType: Sequelize.ENUM(MachineType),
         description: Sequelize.STRING,
-        tolerance: Sequelize.STRING,
+        tolerance: Sequelize.STRING
       },
       {
-        sequelize,
+        sequelize
       }
     )
     return this

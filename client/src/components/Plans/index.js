@@ -39,6 +39,7 @@ function Plans({ users, tests, machines, refresh }) {
     user: '',
     test: '',
     machine: '',
+    status: ''
   })
 
   useEffect(() => {
@@ -95,6 +96,17 @@ function Plans({ users, tests, machines, refresh }) {
     })
     setPlans(plans)
   }
+  const filterStatus = async (status) => {
+    setFilters({
+      ...filters,
+      status,
+    })
+
+    const { data: plans } = await api.get('/plans/', {
+      params: { ...filters, status },
+    })
+    setPlans(plans)
+  }
 
   async function deletePlan(plan) {
     await api
@@ -111,7 +123,7 @@ function Plans({ users, tests, machines, refresh }) {
         })
         setPlans(plans)
       })
-    }
+  }
 
   async function setPlanStatus(plan) {
     await api
@@ -153,7 +165,7 @@ function Plans({ users, tests, machines, refresh }) {
               {users &&
                 users.map((user) => (
                   <option key={user.id} value={user.id}>
-                    {user.name} 
+                    {user.name}
                   </option>
                 ))}
             </Select>
@@ -184,6 +196,14 @@ function Plans({ users, tests, machines, refresh }) {
                 ))}
             </Select>
           </Block>
+          <Block>
+            <Label>Status</Label>
+            <Select onChange={(event) => filterStatus(event.target.value)}>
+              <option value={null} />
+              <option value={true}>Feito</option>
+              <option value={false}>Ainda não realizado</option>
+            </Select>
+          </Block>
         </ConteinerFilters>
       </Filters>
       <ContainerPlans>
@@ -193,8 +213,8 @@ function Plans({ users, tests, machines, refresh }) {
           <P style={{ fontWeight: '700' }}>Tolerância</P>
           <P style={{ fontWeight: '700' }}>Máquina</P>
           <P style={{ fontWeight: '700' }}>Data</P>
-          <P style={{ fontWeight: '700' }}>Feito?</P>
-          <P style={{ fontWeight: '700' }}>Opções</P>
+          <P style={{ fontWeight: '700', width: '50px' }}>Feito?</P>
+          <P style={{ fontWeight: '700',width: '50px' }}>Opções</P>
         </ContainerTitles>
 
         {loading ? (
@@ -213,15 +233,12 @@ function Plans({ users, tests, machines, refresh }) {
                   <P>{plan.tests.tolerance}</P>
                   <P>{plan.machines.name}</P>
                   <P>{moment(plan.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}</P>
-                  <P>
+                  <P style={{width: '50px'}}>
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
                       <Popconfirm
-                        title={
-                          `Tem certeza que deseja 
-                          ${
-                            plan.status ? 'desfazer' : 'realizar'
-                          } 
+                        title={`Tem certeza que deseja 
+                          ${plan.status ? 'desfazer' : 'realizar'} 
                         este teste?`}
                         onConfirm={() => setPlanStatus(plan)}
                         okText="Sim"
@@ -229,11 +246,10 @@ function Plans({ users, tests, machines, refresh }) {
                       >
                         <Switch checked={plan.status} />
                       </Popconfirm>
-                    )
-                    }
+                    )}
                   </P>
 
-                  <P>
+                  <P style={{width: '50px'}}>
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
                       <Popconfirm

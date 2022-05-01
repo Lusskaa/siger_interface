@@ -13,8 +13,8 @@ module.exports = {
             '$2b$10$PUz0Xe8DzxvZkJIGN.yRQuDldQq8XmTmNkuei1koOlDKJXYLMyepu',
           is_active: true,
           created_at: new Date(),
-          updated_at: new Date(),
-        },
+          updated_at: new Date()
+        }
       ],
       {}
     )
@@ -22,5 +22,5 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('users', null, {})
-  },
+  }
 }

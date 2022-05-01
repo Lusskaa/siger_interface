@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
-
+import { Popconfirm } from 'antd'
 import Trash from '../../assets/trash.svg'
 
 import Carousel from 'react-elastic-carousel'
@@ -29,7 +29,7 @@ import {
   Lable,
   Select,
   Container,
-  ContainerTests,
+  ContainerMachines,
   ContainerTitles,
   P,
   ContainerCarousel,
@@ -80,12 +80,18 @@ function RegisterAndDeleteMachines() {
     }
     loadMachines()
   }, [])
-  async function deletetest(machine_Id) {
-    await api.delete(`/machines/${machine_Id}`) // deletando no back
+  async function deletemachine(machine_Id) {
+    await api
+      .delete(`/machines/${machine_Id}`) // deletando no back
+      .then(async () => {
+        toast.success('Máquina deletada com sucesso')
 
-    const newMachines = machines.filter((machine) => machine.id !== machine_Id) // deletando no front
+        const newMachines = machines.filter(
+          (machine) => machine.id !== machine_Id
+        ) // deletando no front
 
-    setmachines(newMachines)
+        setmachines(newMachines)
+      })
   }
 
   return (
@@ -117,6 +123,7 @@ function RegisterAndDeleteMachines() {
                 <option>Non-IMRT</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
+                <option>TODAS</option>
               </Select>
               <ErrorMessage>{errors.type?.message}</ErrorMessage>
 
@@ -132,7 +139,7 @@ function RegisterAndDeleteMachines() {
         <Container>
           <Title style={{ width: '350px' }}> Máquinas Cadastradas</Title>
 
-          <ContainerTests>
+          <ContainerMachines>
             <ContainerTitles>
               <P style={{ fontWeight: '700' }}>Nome</P>
               <P style={{ fontWeight: '700' }}>Tipo</P>
@@ -149,13 +156,21 @@ function RegisterAndDeleteMachines() {
                     <P>{machine.name}</P>
                     <P>{machine.type}</P>
 
-                    <button onClick={() => deletetest(machine.id)}>
-                      <img src={Trash} alt="lata de lixo" />
-                    </button>
+                    <Popconfirm
+                      title="Tem certeza que deseja remover esta máquina? Ao remove-la
+                      todos os planos criados com ela também serão removidos"
+                      onConfirm={() => deletemachine(machine.id)}
+                      okText="Sim"
+                      cancelText="Não"
+                    >
+                      <button>
+                        <img src={Trash} alt="lata de lixo" />
+                      </button>
+                    </Popconfirm>
                   </ContainerCarousel>
                 ))}
             </Carousel>
-          </ContainerTests>
+          </ContainerMachines>
         </Container>
       </Main>
     </Body>

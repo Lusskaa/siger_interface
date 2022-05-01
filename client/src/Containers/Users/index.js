@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Trash from "../../assets/trash.svg";
+import React, { useEffect, useState } from 'react'
+import Trash from '../../assets/trash.svg'
 
-import onIcon from "../../assets/onIcon.svg"
-import offIcon from "../../assets/offIcon.svg"
+import onIcon from '../../assets/onIcon.svg'
+import offIcon from '../../assets/offIcon.svg'
 
-import Carousel from "react-elastic-carousel";
+import Carousel from 'react-elastic-carousel'
 
-import HeaderPage from "../../components/Header";
+import HeaderPage from '../../components/Header'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
-
-
-import { Title } from "../../components/Titles/styles";
-
-
+import { Title } from '../../components/Titles/styles'
 
 import {
   Body,
@@ -24,60 +20,53 @@ import {
   ContainerTitles,
   P,
   ContainerCarousel,
-} from "./styles";
+} from './styles'
 
 function UpdateAndDeleteUsers() {
-
-  const [users, setusers] = useState();
+  const [users, setusers] = useState()
 
   useEffect(() => {
     async function loadUsers() {
-      const { data } = await api.get("/users");
-      setusers(data);
+      const { data } = await api.get('/users')
+      setusers(data)
     }
-    loadUsers();
-  }, []);
+    loadUsers()
+  }, [])
   async function deleteUser(user_Id) {
     // Tentar colocar mensagem de erro para quando deletar um isADm
 
-    await api.delete(`/users/${user_Id}`); // deletando no back
+    await api.delete(`/users/${user_Id}`) // deletando no back
 
-    const newusers = users.filter((user) => user.id !== user_Id); // deletando no front
+    const newusers = users.filter((user) => user.id !== user_Id) // deletando no front
 
-    setusers(newusers);
+    setusers(newusers)
   }
 
   async function setStatus(user_Id, allUsers) {
-    await api.patch(`/users/${user_Id}/status`); // atualizando no back
+    await api.patch(`/users/${user_Id}/status`) // atualizando no back
 
-  
-    const { data } = await api.get("/users");
-    setusers(data);
-
+    const { data } = await api.get('/users')
+    setusers(data)
   }
 
   return (
     <Body>
       <HeaderPage />
- 
 
       <Main>
         <Container>
-          <Title style={{ width: "350px" }}>
-            {" "}
-            Ativar e deletar usuários
-          </Title>
+          <Title style={{ width: '350px' }}> Ativar e deletar usuários</Title>
 
           <ContainerTests>
             <ContainerTitles>
-              <P style={{ fontWeight: "700" }}>Nome</P>
-              <P style={{ fontWeight: "700" }}>E-mail</P>
-              <P style={{ fontWeight: "700", width: "80px" }}>Opções</P>
+              <P style={{ fontWeight: '700' }}>Nome</P>
+              <P style={{ fontWeight: '700' }}>E-mail</P>
+              <P style={{ fontWeight: '700', width: '80px' }}>Opções</P>
             </ContainerTitles>
             <Carousel
               verticalMode
               itemsToShow={8}
-              style={{ width: "90%", justifySelf: "center" }}
+              style={{ width: '90%', justifySelf: 'center' }}
             >
               {users &&
                 users.map((user) => (
@@ -111,6 +100,6 @@ function UpdateAndDeleteUsers() {
         </Container>
       </Main>
     </Body>
-  );
+  )
 }
-export default UpdateAndDeleteUsers;
+export default UpdateAndDeleteUsers

@@ -3,7 +3,7 @@ import Plan from '../entities/models/Plan'
 const insertOwnUser = (request, response, next) => {
   request.body = request.body.map((plan) => ({
     ...plan,
-    users_id: request.user.id,
+    users_id: request.user.id
   }))
   next()
 }
@@ -22,5 +22,5 @@ const verifyOwnPlan = async (request, response, next) => {
 
 export default {
   insertOwnUser,
-  verifyOwnPlan,
+  verifyOwnPlan
 }

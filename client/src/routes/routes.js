@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
-import Login from "../Containers/Login";
-import Register from "../Containers/Register";
-import Home from "../Containers/Home";
-import RegisterAndDeleteTests from "../Containers/Tests";
-import RegisterAndDeleteMachines from "../Containers/Machines";
-import UpdateAndDeleteUsers from "../Containers/Users";
-import PlanCalendar from "../Containers/Plan";
+import Login from '../Containers/Login'
+import Register from '../Containers/Register'
+import Home from '../Containers/Home'
+import RegisterAndDeleteTests from '../Containers/Tests'
+import RegisterAndDeleteMachines from '../Containers/Machines'
+import UpdateAndDeleteUsers from '../Containers/Users'
+import PlanCalendar from '../Containers/Plan'
 
-import PrivateRoute from "./private-route";
-import PrivateAdmRoute from "./private-ADM-route";
+import PrivateRoute from './private-route'
+import PrivateAdmRoute from './private-ADM-route'
 
 function Routes() {
   return (
@@ -40,7 +40,7 @@ function Routes() {
         />
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default Routes;
+export default Routes

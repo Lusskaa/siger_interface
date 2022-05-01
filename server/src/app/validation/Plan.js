@@ -6,7 +6,7 @@ const store = async (request, response, next) => {
       date: Yup.date().required(), // .min(new Date(), ({ value }) => `${value.} deve ser menor que hoje`)
       machines_id: Yup.string().required().uuid(),
       tests_id: Yup.string().required().uuid(),
-      users_id: Yup.string().required().uuid(),
+      users_id: Yup.string().required().uuid()
     })
   )
 
@@ -19,5 +19,5 @@ const store = async (request, response, next) => {
 }
 
 export default {
-  store,
+  store
 }

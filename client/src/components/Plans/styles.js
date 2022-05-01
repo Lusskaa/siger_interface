@@ -25,18 +25,6 @@ export const ContainerItens = styled.div`
     color: #000000;
     margin-bottom: 10px;
   }
-/*   input {
-    border: ${(props) => props.error ? '2px solid #cc1717' : 'none'};
-    width: 100%;
-    height: 40px;
-    background: #f7f7f7;
-    box-shadow: -2px 2px 3px;
-    border-radius: 10px;
-    border: none;
-    position: relative;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-  } */
 `
 
 export const Select = styled.select`
@@ -76,7 +64,6 @@ export const Block = styled.div`
   }
 `
 export const ContainerCarousel = styled.div`
-  /* height: 60px; */
   display: flex;
   align-items: center;
   justify-items: center;
@@ -106,10 +93,7 @@ export const P = styled.p`
 `
 export const Filters = styled.div`
   margin: 0 0 30px 0;
-  /* background: rgba(242, 191, 145, 0.3); */
 
-  height: 130px;
-  width: 1100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,9 +102,9 @@ export const Filters = styled.div`
   .filtersTitle {
     font-weight: 500;
     font-size: 22px;
-    margin-bottom: 0;
-    margin-left: 10px;
-    align-self: flex-start;
+    margin-bottom: 10px;
+
+    align-self: center;
     border-bottom: 3px solid #cad2d3;
   }
 `
@@ -130,11 +114,6 @@ export const ConteinerFilters = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 25px;
-
-  /*     
-        margin-right: 60px;
-
-    } */
 `
 export const ContainerPlans = styled.div`
   display: flex;

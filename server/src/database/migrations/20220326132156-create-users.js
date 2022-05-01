@@ -1,37 +1,37 @@
 'use strict'
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
       id: {
         defaulValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         allowNull: false,
-        primaryKey: true,
+        primaryKey: true
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       email: {
         allowNull: false,
         type: Sequelize.STRING,
-        unique: true,
+        unique: true
       },
       password: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaulValue: new Date(),
+        defaulValue: new Date()
       },
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaulValue: new Date(),
-      },
+        defaulValue: new Date()
+      }
     })
   },
   // toda vez que executar o programa ele vai para este up
@@ -41,9 +41,9 @@ module.exports = {
    * Example:
    * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
    */
-  async down(queryInterface) {
+  async down (queryInterface) {
     await queryInterface.dropTable('users')
-  },
+  }
 }
 
 /**
