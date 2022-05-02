@@ -12,14 +12,13 @@ import {
 } from './styles'
 
 import LogoSiger from '../../assets/logoSiger.svg'
-import userIcon from '../../assets/userIcon.svg'
-import homeIcon from '../../assets/homeIcon.svg'
 import LinkPage from '../LinkPages'
 
 import { useUser } from '../../hooks/UserContext'
 
 import { useHistory } from 'react-router-dom'
-
+import { Avatar } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 function HeaderPage() {
   const { push } = useHistory()
 
@@ -45,7 +44,13 @@ function HeaderPage() {
       <ContainerRight>
         <Line />
         <ImgLogoSuperior src={LogoSiger} alt="Logo Siger" />
-        <ImgUserIcon src={userIcon} alt="User Icon" />
+        <Avatar
+          style={{
+            backgroundColor: '#07bc0c',
+          }}
+          size="large"
+          icon={<UserOutlined />}
+        />
         <ContainerText>
           <p>Olá, {JSON.parse(user).name.split(' ', 1)}</p>
           <GetOutLink onClick={logoutUser}>Sair</GetOutLink>

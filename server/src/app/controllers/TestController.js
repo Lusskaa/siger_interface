@@ -45,7 +45,10 @@ class TestController {
 
     const test = await Test.findAll({
       where,
-      order: [['type']]
+      order: [
+        ['recommendedFrequency'],
+        ['type']
+      ]
     })
     return response.json(test)
   }

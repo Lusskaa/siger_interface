@@ -68,28 +68,40 @@ export const ContainerCarousel = styled.div`
   align-items: center;
   justify-items: center;
   border-bottom: 2px solid #cad2d3;
-  padding: 5px;
+  padding: 10px;
+  background-color: ${props => props.isDone ? '#FFF1F1' : ''};
 
-  button.trash-btn {
+  .alert {
+    position: absolute;
+    /* left: 1em; */
+    
+  }
+
+  .trash-btn {
     background: none;
     border: none;
     cursor: pointer;
+  }
+
+  .infoIcon{
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 90px;
+    width: 150px;
   }
 
   .ant-switch-checked {
     background: #07bc0c;
   }
 
-  .addIcon {
-    height: 35px;
-    margin-right: 50px;
-  }
 `
 export const P = styled.p`
   width: 150px;
   display: flex;
   justify-content: center;
   margin: 0 10px;
+  
 `
 export const Filters = styled.div`
   margin: 0 0 30px 0;

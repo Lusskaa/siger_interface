@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { DatePicker, Switch, Popconfirm } from 'antd' // Popover
+import { DatePicker, Switch, Popconfirm, Popover, Alert } from 'antd' // Popover
 import moment from 'moment'
 import Trash from '../../assets/trash.svg'
+import Info from '../../assets/infoIcon.svg'
 
 import { toast } from 'react-toastify'
 
@@ -39,7 +40,7 @@ function Plans({ users, tests, machines, refresh }) {
     user: '',
     test: '',
     machine: '',
-    status: ''
+    status: '',
   })
 
   useEffect(() => {
@@ -101,7 +102,7 @@ function Plans({ users, tests, machines, refresh }) {
       ...filters,
       status,
     })
-
+    
     const { data: plans } = await api.get('/plans/', {
       params: { ...filters, status },
     })
@@ -210,11 +211,11 @@ function Plans({ users, tests, machines, refresh }) {
         <ContainerTitles>
           <P style={{ fontWeight: '700' }}>Usuário</P>
           <P style={{ fontWeight: '700' }}>Teste</P>
-          <P style={{ fontWeight: '700' }}>Tolerância</P>
+          {/* <P style={{ fontWeight: '700', width: '90px' }}>Informações</P> */}
           <P style={{ fontWeight: '700' }}>Máquina</P>
           <P style={{ fontWeight: '700' }}>Data</P>
           <P style={{ fontWeight: '700', width: '50px' }}>Feito?</P>
-          <P style={{ fontWeight: '700',width: '50px' }}>Opções</P>
+          <P style={{ fontWeight: '700', width: '50px' }}>Opções</P>
         </ContainerTitles>
 
         {loading ? (
@@ -227,13 +228,49 @@ function Plans({ users, tests, machines, refresh }) {
           >
             {plans.length != 0 &&
               plans.map((plan) => (
-                <ContainerCarousel key={plan.id}>
+                <ContainerCarousel key={plan.id} isDone = {moment(plan.date)< moment() && !plan.status}>
+                  {
+                    (moment(plan.date)< moment() && !plan.status) ?
+                    (<Alert message="Teste Pendente" type="warning" showIcon closable  className='alert'/>) :
+                    ('')
+                  }
+
+                  
                   <P>{plan.users.name}</P>
-                  <P>{plan.tests.name}</P>
-                  <P>{plan.tests.tolerance}</P>
+                  {/* <P> */}
+                    {/* {plan.tests.name} */}
+
+                  <Popover
+                    content={
+                      <>
+                        <p>Tolerância: {plan.tests.tolerance}</p>
+                        <p>Tipo: {plan.tests.type}</p>
+                        <p>
+                          Frequência recomendada:{' '}
+                          {plan.tests.recommendedFrequency}
+                        </p>
+                        <p>
+                          Tipo de máquina de tratamento:{' '}
+                          {plan.tests.recommendedMachineType}
+                        </p>
+                      </>
+                    }
+                    title="Informações"
+                    trigger="hover"
+                  >
+                    <button className='infoIcon'>
+                      {/* <img style={{width: '20px'}} src={Info} alt="info icon" /> */}
+                      {plan.tests.name}
+                    </button>
+                  </Popover>
+
+
+
+                  {/* </P> */}
+
                   <P>{plan.machines.name}</P>
                   <P>{moment(plan.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}</P>
-                  <P style={{width: '50px'}}>
+                  <P style={{ width: '50px' }}>
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
                       <Popconfirm
@@ -249,7 +286,7 @@ function Plans({ users, tests, machines, refresh }) {
                     )}
                   </P>
 
-                  <P style={{width: '50px'}}>
+                  <P style={{ width: '50px' }}>
                     {(!!currentUser.isAdm ||
                       currentUser.id === plan.users_id) && (
                       <Popconfirm
