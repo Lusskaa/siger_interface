@@ -14,7 +14,12 @@ module.exports = {
   },
   port: parseInt(process.env.DB_PORT),
   minifyAliases: true,
-  dialectOptions: {}
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 }
 
 // aqui devemos fazer algumas configuraacoes quando eu for para o siger
