@@ -12,7 +12,9 @@ module.exports = {
     underscored: true,
     underscoredall: true
   },
-  port: parseInt(process.env.DB_PORT)
+  port: parseInt(process.env.DB_PORT),
+  minifyAliases: true,
+  dialectOptions: {}
 }
 
 // aqui devemos fazer algumas configuraacoes quando eu for para o siger
