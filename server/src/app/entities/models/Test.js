@@ -4,7 +4,7 @@ import TestType from '../enum/TestType'
 import MachineType from '../enum/MachineType'
 
 class Test extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,

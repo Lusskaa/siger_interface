@@ -1,5 +1,5 @@
 export default class InvalidException extends Error {
-  constructor (message) {
+  constructor(message) {
     super(message)
     this.name = this.constructor.name
     this.status = 400

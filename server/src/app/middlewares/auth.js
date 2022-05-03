@@ -32,9 +32,7 @@ const isAdm = async (request, response, next) => {
       where: { id: request.user.id }
     })
     if (!user || !user.isActive) {
-      return response
-        .status(403)
-        .json({ error: 'Este usuário não está ativo' })
+      return response.status(403).json({ error: 'Este usuário não está ativo' })
     }
 
     if (process.env.ADMS.split(',').includes(request.user.id)) {
@@ -57,9 +55,7 @@ const isAuthenticated = async (request, response, next) => {
       where: { id: request.user.id }
     })
     if (!user || !user.isActive) {
-      return response
-        .status(403)
-        .json({ error: 'Este usuário não está ativo' })
+      return response.status(403).json({ error: 'Este usuário não está ativo' })
     }
 
     next()

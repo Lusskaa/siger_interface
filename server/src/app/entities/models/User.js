@@ -1,7 +1,7 @@
 import Sequelize, { Model } from 'sequelize'
 import bcrypt from 'bcrypt'
 class User extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
@@ -23,7 +23,7 @@ class User extends Model {
     return this
   }
 
-  checkPassword (password) {
+  checkPassword(password) {
     return bcrypt.compare(password, this.password)
   }
 }

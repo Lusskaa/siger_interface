@@ -52,7 +52,7 @@ function HeaderPage() {
           icon={<UserOutlined />}
         />
         <ContainerText>
-          <p>Olá, {JSON.parse(user).name.split(' ', 1)}</p>
+          <p>Olá, {!!user && JSON.parse(user).name.split(' ', 1)}</p>
           <GetOutLink onClick={logoutUser}>Sair</GetOutLink>
         </ContainerText>
       </ContainerRight>

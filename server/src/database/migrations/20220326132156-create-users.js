@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
       id: {
         defaulValue: Sequelize.UUIDV4,
@@ -41,7 +41,7 @@ module.exports = {
    * Example:
    * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
    */
-  async down (queryInterface) {
+  async down(queryInterface) {
     await queryInterface.dropTable('users')
   }
 }

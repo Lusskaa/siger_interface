@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const apiSiger = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: process.env.REACT_APP_API_URL,
 })
 
 apiSiger.interceptors.request.use(async (config) => {

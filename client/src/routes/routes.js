@@ -15,7 +15,7 @@ import PrivateAdmRoute from './private-ADM-route'
 
 function Routes() {
   return (
-    <Router>
+    <Router basename={process.env.REACT_APP_CONTEXT}>
       <Switch>
         <Route component={Login} path="/login" />
         <Route component={Register} path="/cadastro" />

@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-server:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_KEY}}
+        heroku_app_name: "siger-server" #Must be unique in Heroku
+        heroku_email: "lucasmartinsunb@gmail.com"
+        usedocker: true
+        appdir: server
+  deploy-client:
+    runs-on: ubuntu-latest
+    needs: deploy-server
+    steps:
+    - uses: actions/checkout@v2
+    - run: cd client && npm i react-scripts && npm run build
+    - uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_KEY}}
+        heroku_app_name: "siger-client"
+        heroku_email: "lucasmartinsunb@gmail.com"
+        usedocker: true
+        appdir: client
+      env:
+        REACT_APP_API_URL: https://siger-server.herokuapp.com/
+        REACT_APP_CONTEXT: app

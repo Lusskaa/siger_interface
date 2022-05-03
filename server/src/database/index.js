@@ -9,11 +9,11 @@ import configDatabase from '../config/database'
 
 const models = [User, Machine, Test, Plan]
 class Database {
-  constructor () {
+  constructor() {
     this.init()
   }
 
-  init () {
+  init() {
     this.connection = new Sequelize(configDatabase)
     models
       .map((model) => model.init(this.connection))
@@ -22,7 +22,7 @@ class Database {
       )
   }
 
-  sequelize () {
+  sequelize() {
     return this.connection
   }
 }

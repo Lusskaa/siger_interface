@@ -28,7 +28,7 @@ function LinkPage() {
         Planejamento
       </Link>
 
-      {JSON.parse(user).isAdm && (
+      {!!user && JSON.parse(user).isAdm && (
         <>
           <Link
             className="links"

@@ -47,9 +47,8 @@ function Home() {
           </strong>
           <br></br>
           Com este software você poderá ter acesso a agenda dos testes de
-          controle de qualidade das máquinas que possuem em sua instituição.
-          Basta escolher o teste cadastrado, a máquina e a frequência ao qual o
-          teste deve ser feito.
+          controle de qualidade das máquinas que existem em sua instituição médica.
+          Navegue pelas páginas e construa seu planejamento!!!
         </Welcome>
       </ContainerWelcome>
 

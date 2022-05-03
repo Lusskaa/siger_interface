@@ -1,7 +1,7 @@
 import Sequelize, { Model } from 'sequelize'
 
 class Plan extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {
         date: Sequelize.DATEONLY,
@@ -14,7 +14,7 @@ class Plan extends Model {
     return this
   }
 
-  static associate (models) {
+  static associate(models) {
     this.belongsTo(models.Test, {
       foreignKey: 'tests_id',
       as: 'tests'

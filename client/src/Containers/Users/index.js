@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Trash from '../../assets/trash.svg'
 
+import {Popconfirm} from 'antd' // Popover
+
 import onIcon from '../../assets/onIcon.svg'
 import offIcon from '../../assets/offIcon.svg'
 
@@ -89,9 +91,18 @@ function UpdateAndDeleteUsers() {
                           />
                         )}
                       </button>
-                      <button onClick={() => deleteUser(user.id)}>
-                        <img src={Trash} alt="lata de lixo" />
-                      </button>
+
+                      <Popconfirm
+                        title="Tem certeza que deseja remover este usuário? Todos os testes destinados a ele serão removidos"
+                        onConfirm={() => deleteUser(user.id)}
+                        okText="Sim"
+                        cancelText="Não"
+                      >
+                        <button className="trash-btn">
+                          <img src={Trash} alt="lata de lixo" />
+                        </button>
+                      </Popconfirm>
+
                     </P>
                   </ContainerCarousel>
                 ))}

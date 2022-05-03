@@ -2,7 +2,7 @@ import { v4 } from 'uuid'
 import Test from '../entities/models/Test'
 
 class TestController {
-  async store (request, response) {
+  async store(request, response) {
     const {
       name,
       type,
@@ -33,7 +33,7 @@ class TestController {
     return response.status(201).json(test)
   }
 
-  async index (request, response) {
+  async index(request, response) {
     const where = {}
 
     if (request.query.type) {
@@ -45,15 +45,12 @@ class TestController {
 
     const test = await Test.findAll({
       where,
-      order: [
-        ['recommendedFrequency'],
-        ['type']
-      ]
+      order: [['recommendedFrequency'], ['type']]
     })
     return response.json(test)
   }
 
-  async delete (request, response) {
+  async delete(request, response) {
     const { id } = request.params
 
     const test = await Test.findByPk(id)

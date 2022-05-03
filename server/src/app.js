@@ -14,7 +14,7 @@ import cors from 'cors'
 import './database'
 
 class App {
-  constructor () {
+  constructor() {
     this.app = express()
     this.app.use(cors())
 
@@ -22,11 +22,11 @@ class App {
     this.routes()
   }
 
-  middlewares () {
+  middlewares() {
     this.app.use(express.json())
   }
 
-  routes () {
+  routes() {
     this.app.use(Public)
     this.app.use('/machines', Machines)
     this.app.use('/plans', Plans)

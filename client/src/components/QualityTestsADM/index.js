@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
-import {Popconfirm } from 'antd'
+import { Popconfirm } from 'antd'
 
 import {
   Container,
@@ -119,7 +119,7 @@ function QualityTestsADM({ refresh = false }) {
           <P style={{ fontWeight: '700' }}>Tolerância</P>
           <P style={{ fontWeight: '700' }}>Frequência recomendada</P>
           <P style={{ fontWeight: '700' }}>Máquina recomendada</P>
-          {JSON.parse(user).isAdm ? (
+          {!!user && JSON.parse(user).isAdm ? (
             <P style={{ fontWeight: '700', width: '50px' }}>Deletar</P>
           ) : (
             ''
@@ -142,7 +142,7 @@ function QualityTestsADM({ refresh = false }) {
                   <P>{test.recommendedFrequency}</P>
                   <P>{test.recommendedMachineType}</P>
 
-                  {JSON.parse(user).isAdm ? (
+                  {!!user && JSON.parse(user).isAdm ? (
                     <Popconfirm
                       title="Tem certeza que deseja remover o teste?"
                       onConfirm={() => deletetest(test.id)}

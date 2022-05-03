@@ -3,7 +3,7 @@ import User from '../entities/models/User'
 import authConfig from '../../config/auth'
 
 class SessionController {
-  async login (request, response) {
+  async login(request, response) {
     const { email, password } = request.body
 
     const user = await User.findOne({

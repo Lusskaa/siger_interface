@@ -4,7 +4,7 @@ const testTypeEnum = require('../../app/entities/enum/TestType')
 const machineTypeEnum = require('../../app/entities/enum/MachineType')
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tests', {
       id: {
         defaulValue: Sequelize.UUIDV4,
@@ -49,7 +49,7 @@ module.exports = {
     })
   },
 
-  async down (queryInterface) {
+  async down(queryInterface) {
     await queryInterface.dropTable('tests')
     await queryInterface.sequelize.query('drop type enum_tests_type;')
     await queryInterface.sequelize.query(

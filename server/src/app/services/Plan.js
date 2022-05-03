@@ -5,7 +5,7 @@ import User from '../entities/models/User'
 import InvalidException from '../utils/InvalidException'
 
 class PlanService {
-  async store (planData) {
+  async store(planData) {
     const { date, tests_id, machines_id, users_id } = planData
 
     const plan = await Plan.findOne({

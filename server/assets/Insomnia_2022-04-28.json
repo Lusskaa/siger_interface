@@ -1,1 +1,679 @@
-{"_type":"export","__export_format":4,"__export_date":"2022-04-29T00:50:39.741Z","__export_source":"insomnia.desktop.app:v2022.3.0","resources":[{"_id":"req_24972ed956cd4686b909f722bbad49d9","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651192598255,"created":1650035626923,"url":"{{ _.base_url }}{{ _.plans_path }}","name":"Create","description":"","method":"POST","body":{"mimeType":"application/json","text":"[\n\t{\n\t\t\"date\": \"2022-10-12\",\n\t\t\"machines_id\": \"839fb942-71a1-4b61-ba9d-06ae73bd28b3\",\n\t\t\"users_id\": \"edb77d06-bc08-4bde-a369-65f346fbb3c9\",\n\t\t\"tests_id\": \"5675f528-d4cd-4a8b-a69c-91ea3c84fb14\"\n\t}\n]"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_22ae14aac76b43d49321736c7e9104cb"},{"id":"pair_3f0d50286c40470f9a7a38fc49930913","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651192557064,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_768d4b48703244058a1aab0492a9b465","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650035619994,"created":1650035619994,"name":"Plan","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1650035619994,"_type":"request_group"},{"_id":"wrk_c944d8abe6424619989eaed7f47a01d0","parentId":null,"modified":1650024988385,"created":1650024988385,"name":"Siger","description":"","scope":"collection","_type":"workspace"},{"_id":"req_75f19d179a9c4e20bb2e164c047475c3","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651193379066,"created":1650330850306,"url":"{{ _.base_url }}{{ _.plans_path }}","name":"Get all","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_ac75c653e5f54ba6af5688dea779f9d2","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651192557039,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_4a1e54412fa54f538b621413c38e413a","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651193281635,"created":1651192557014,"url":"{{ _.base_url }}{{ _.plans_path }}/645cb63f-f241-437f-8f4c-89f9e89bf80a/status","name":"Set own plan status","description":"","method":"PATCH","body":{},"parameters":[],"headers":[{"id":"pair_f845aea5f7c4410eb9dac28abd20d123","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651192557014,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_15449e2813874e94b46a9f2bf43285f3","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651193305716,"created":1651192651534,"url":"{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533{{ _.plans_path }}/645cb63f-f241-437f-8f4c-89f9e89bf80a/status","name":"Set plan status","description":"","method":"PATCH","body":{},"parameters":[],"headers":[{"id":"pair_f845aea5f7c4410eb9dac28abd20d123","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651088137671,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_55baa08b521e4ece9fc64c38b36aec0a","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651193366352,"created":1651193238466,"url":"{{ _.base_url }}{{ _.plans_path }}/975356ec-a2b8-4d24-b50d-7bf0ff1465c1","name":"Delete own","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"id":"pair_ecfbae38c11940daaea911bf6bedf037","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651088137621,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_8a0dd42351574cc4ab2d1aecbef4214e","parentId":"fld_768d4b48703244058a1aab0492a9b465","modified":1651193343762,"created":1651193302260,"url":"{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533{{ _.plans_path }}/45bfb206-383c-4e6b-a7ea-4ad495bc0b37","name":"Delete","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"id":"pair_ecfbae38c11940daaea911bf6bedf037","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1651035927974.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_a5c7e74bd82b4e13b2167328b7ade516","parentId":"fld_504baba7e34746f18fd44a9722aad496","modified":1651193364456,"created":1650026662097,"url":"{{ _.base_url }}{{ _.sessions_path }}","name":"Login","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\t\"email\": \"lucasmartinsunb@gmail.com\",\n\t\t\"password\": \"123456789\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b620ccbc27bb4d248e7535d4d36452ce"}],"authentication":{},"metaSortKey":-1650026662097,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_504baba7e34746f18fd44a9722aad496","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650026653778,"created":1650026653778,"name":"Sessions","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1650026653778,"_type":"request_group"},{"_id":"req_52f961db7a8f4425b363278b1491bf56","parentId":"fld_2acf69d7660d4ce1854d6ae3a9f990b3","modified":1650331393061,"created":1650027905696,"url":"{{ _.base_url }}{{ _.machines_path }}","name":"Create","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"MachineTest2\",\n\t\"type\": \"TODAS\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_154e464ca9df43b08c5b94d70a55112b"},{"id":"pair_21228b314f90482babd7aea052cf5342","name":"authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909623,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_2acf69d7660d4ce1854d6ae3a9f990b3","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650026620963,"created":1650026620963,"name":"Machine","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1650026620964,"_type":"request_group"},{"_id":"req_dec7c8645a5246519d3526ce7b750f3b","parentId":"fld_2acf69d7660d4ce1854d6ae3a9f990b3","modified":1651192478832,"created":1650026623920,"url":"{{ _.base_url }}{{ _.machines_path }}","name":"Get All","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_315697ee02434e2e94a845ec1aff0433","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909598,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_21b1e76d0ecb40448bcc3dc9c7982be6","parentId":"fld_2acf69d7660d4ce1854d6ae3a9f990b3","modified":1650029945458,"created":1650029909573,"url":"{{ _.base_url }}{{ _.machines_path }}/f37bec46-99f4-4214-9cbd-f9ac6f3d8549","name":"Delete","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"id":"pair_dc442161e80b415a91f53b90bc3c391f","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909573,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_5ff9fd1b09ed47658cba8d84071667ac","parentId":"fld_fb5892c5a4e748d482300da55a9921a6","modified":1650331414168,"created":1650029954205,"url":"{{ _.base_url }}{{ _.tests_path }}","name":"Create","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"TesteTeste\",\n\t\"type\": \"Dosimétrico\",\n\t\"recommendedFrequency\": \"blahblah\",\n\t\"recommendedMachineType\": \"TODAS\",\n\t\"tolerance\": \"blasldsadssa\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_154e464ca9df43b08c5b94d70a55112b"},{"id":"pair_21228b314f90482babd7aea052cf5342","name":"authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909623,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_fb5892c5a4e748d482300da55a9921a6","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650029954185,"created":1650029954185,"name":"Test","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1650025879933.5,"_type":"request_group"},{"_id":"req_f45b22b5ac8045ecae4575b93a17ef0d","parentId":"fld_fb5892c5a4e748d482300da55a9921a6","modified":1651192509222,"created":1650029954194,"url":"{{ _.base_url }}{{ _.tests_path }}","name":"Get All","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_315697ee02434e2e94a845ec1aff0433","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909598,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_ce8476ec8ab8419886ceaea30faa8ea9","parentId":"fld_fb5892c5a4e748d482300da55a9921a6","modified":1650030319523,"created":1650029954210,"url":"{{ _.base_url }}{{ _.tests_path }}/60ff74d6-e942-4d82-9a23-5ead1208f654","name":"Delete","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"id":"pair_dc442161e80b415a91f53b90bc3c391f","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650029909573,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e499aa3f1713466faf686c059d8db39b","parentId":"fld_9dcb75e6d12741b7bca4624ea54931ac","modified":1651192431366,"created":1650025147061,"url":"{{ _.base_url }}{{ _.users_path }}","name":"Create","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Luiz\",\n\t\"email\": \"luiz@gmail.com\",\n\t\"password\": \"123456789\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_70a9c035d7d64a54ba8752a82aefd43b"}],"authentication":{},"metaSortKey":-1650031132854,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_9dcb75e6d12741b7bca4624ea54931ac","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650025138903,"created":1650025138903,"name":"User","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1650025138903,"_type":"request_group"},{"_id":"req_f29ba39e44b4468ebd4235175b573fbf","parentId":"fld_9dcb75e6d12741b7bca4624ea54931ac","modified":1651192439947,"created":1650031132804,"url":"{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533/status","name":"SetStatus","description":"","method":"PATCH","body":{},"parameters":[],"headers":[{"id":"pair_8e45c051bfd74e1596b6be667ee6ff7d","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650031132804,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_ee59f8a8fed4481c9fe4aa4c2c2bdc8a","parentId":"fld_9dcb75e6d12741b7bca4624ea54931ac","modified":1651192443691,"created":1650030971603,"url":"{{ _.base_url }}{{ _.users_path }}/","name":"Get all","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_2cda52a4c34345e598fc49bff64e06b6","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650030971603,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_6ce5fd6ff4cf4723810b5699dffd1e01","parentId":"fld_9dcb75e6d12741b7bca4624ea54931ac","modified":1650031820231,"created":1650031688616,"url":"{{ _.base_url }}{{ _.users_path }}/0e39c32f-7b77-49bf-b2a1-04d2345315e5","name":"Delete","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"id":"pair_a366b2e0919244aa9457a3d55cac4191","name":"Authorization","value":"{{ _.token }}","description":""}],"authentication":{},"metaSortKey":-1650030971553,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_e670eb56859f6a2038c06838b0ee768f8e53091f","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650025150190,"created":1650024988393,"name":"Base Environment","data":{},"dataPropertyOrder":{},"color":null,"isPrivate":false,"metaSortKey":1650024988393,"_type":"environment"},{"_id":"jar_e670eb56859f6a2038c06838b0ee768f8e53091f","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650024988395,"created":1650024988395,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_568f0a3a1a0547249be058c174eb753d","parentId":"wrk_c944d8abe6424619989eaed7f47a01d0","modified":1650024988387,"created":1650024988387,"fileName":"Siger","contents":"","contentType":"yaml","_type":"api_spec"},{"_id":"env_64e27928759f405eaf38600c3e2fdefd","parentId":"env_e670eb56859f6a2038c06838b0ee768f8e53091f","modified":1650035930126,"created":1650025154174,"name":"Local","data":{"base_url":"http://localhost:3001","users_path":"/users","machines_path":"/machines","sessions_path":"/sessions","tests_path":"/tests","plans_path":"/plans","token":"Bearer {% response 'body', 'req_a5c7e74bd82b4e13b2167328b7ade516', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"},"dataPropertyOrder":{"&":["base_url","users_path","machines_path","sessions_path","tests_path","plans_path","token"]},"color":null,"isPrivate":false,"metaSortKey":1650025154174,"_type":"environment"}]}
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-04-29T00:50:39.741Z",
+  "__export_source": "insomnia.desktop.app:v2022.3.0",
+  "resources": [
+    {
+      "_id": "req_24972ed956cd4686b909f722bbad49d9",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651192598255,
+      "created": 1650035626923,
+      "url": "{{ _.base_url }}{{ _.plans_path }}",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "[\n\t{\n\t\t\"date\": \"2022-10-12\",\n\t\t\"machines_id\": \"839fb942-71a1-4b61-ba9d-06ae73bd28b3\",\n\t\t\"users_id\": \"edb77d06-bc08-4bde-a369-65f346fbb3c9\",\n\t\t\"tests_id\": \"5675f528-d4cd-4a8b-a69c-91ea3c84fb14\"\n\t}\n]"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_22ae14aac76b43d49321736c7e9104cb"
+        },
+        {
+          "id": "pair_3f0d50286c40470f9a7a38fc49930913",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651192557064,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_768d4b48703244058a1aab0492a9b465",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650035619994,
+      "created": 1650035619994,
+      "name": "Plan",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650035619994,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "parentId": null,
+      "modified": 1650024988385,
+      "created": 1650024988385,
+      "name": "Siger",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_75f19d179a9c4e20bb2e164c047475c3",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651193379066,
+      "created": 1650330850306,
+      "url": "{{ _.base_url }}{{ _.plans_path }}",
+      "name": "Get all",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ac75c653e5f54ba6af5688dea779f9d2",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651192557039,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4a1e54412fa54f538b621413c38e413a",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651193281635,
+      "created": 1651192557014,
+      "url": "{{ _.base_url }}{{ _.plans_path }}/645cb63f-f241-437f-8f4c-89f9e89bf80a/status",
+      "name": "Set own plan status",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_f845aea5f7c4410eb9dac28abd20d123",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651192557014,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_15449e2813874e94b46a9f2bf43285f3",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651193305716,
+      "created": 1651192651534,
+      "url": "{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533{{ _.plans_path }}/645cb63f-f241-437f-8f4c-89f9e89bf80a/status",
+      "name": "Set plan status",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_f845aea5f7c4410eb9dac28abd20d123",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651088137671,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_55baa08b521e4ece9fc64c38b36aec0a",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651193366352,
+      "created": 1651193238466,
+      "url": "{{ _.base_url }}{{ _.plans_path }}/975356ec-a2b8-4d24-b50d-7bf0ff1465c1",
+      "name": "Delete own",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ecfbae38c11940daaea911bf6bedf037",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651088137621,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8a0dd42351574cc4ab2d1aecbef4214e",
+      "parentId": "fld_768d4b48703244058a1aab0492a9b465",
+      "modified": 1651193343762,
+      "created": 1651193302260,
+      "url": "{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533{{ _.plans_path }}/45bfb206-383c-4e6b-a7ea-4ad495bc0b37",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ecfbae38c11940daaea911bf6bedf037",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1651035927974.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a5c7e74bd82b4e13b2167328b7ade516",
+      "parentId": "fld_504baba7e34746f18fd44a9722aad496",
+      "modified": 1651193364456,
+      "created": 1650026662097,
+      "url": "{{ _.base_url }}{{ _.sessions_path }}",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"email\": \"lucasmartinsunb@gmail.com\",\n\t\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_b620ccbc27bb4d248e7535d4d36452ce"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650026662097,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_504baba7e34746f18fd44a9722aad496",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650026653778,
+      "created": 1650026653778,
+      "name": "Sessions",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650026653778,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_52f961db7a8f4425b363278b1491bf56",
+      "parentId": "fld_2acf69d7660d4ce1854d6ae3a9f990b3",
+      "modified": 1650331393061,
+      "created": 1650027905696,
+      "url": "{{ _.base_url }}{{ _.machines_path }}",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"MachineTest2\",\n\t\"type\": \"TODAS\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_154e464ca9df43b08c5b94d70a55112b"
+        },
+        {
+          "id": "pair_21228b314f90482babd7aea052cf5342",
+          "name": "authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909623,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_2acf69d7660d4ce1854d6ae3a9f990b3",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650026620963,
+      "created": 1650026620963,
+      "name": "Machine",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650026620964,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_dec7c8645a5246519d3526ce7b750f3b",
+      "parentId": "fld_2acf69d7660d4ce1854d6ae3a9f990b3",
+      "modified": 1651192478832,
+      "created": 1650026623920,
+      "url": "{{ _.base_url }}{{ _.machines_path }}",
+      "name": "Get All",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_315697ee02434e2e94a845ec1aff0433",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909598,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_21b1e76d0ecb40448bcc3dc9c7982be6",
+      "parentId": "fld_2acf69d7660d4ce1854d6ae3a9f990b3",
+      "modified": 1650029945458,
+      "created": 1650029909573,
+      "url": "{{ _.base_url }}{{ _.machines_path }}/f37bec46-99f4-4214-9cbd-f9ac6f3d8549",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dc442161e80b415a91f53b90bc3c391f",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909573,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5ff9fd1b09ed47658cba8d84071667ac",
+      "parentId": "fld_fb5892c5a4e748d482300da55a9921a6",
+      "modified": 1650331414168,
+      "created": 1650029954205,
+      "url": "{{ _.base_url }}{{ _.tests_path }}",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"TesteTeste\",\n\t\"type\": \"Dosimétrico\",\n\t\"recommendedFrequency\": \"blahblah\",\n\t\"recommendedMachineType\": \"TODAS\",\n\t\"tolerance\": \"blasldsadssa\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_154e464ca9df43b08c5b94d70a55112b"
+        },
+        {
+          "id": "pair_21228b314f90482babd7aea052cf5342",
+          "name": "authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909623,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_fb5892c5a4e748d482300da55a9921a6",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650029954185,
+      "created": 1650029954185,
+      "name": "Test",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650025879933.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_f45b22b5ac8045ecae4575b93a17ef0d",
+      "parentId": "fld_fb5892c5a4e748d482300da55a9921a6",
+      "modified": 1651192509222,
+      "created": 1650029954194,
+      "url": "{{ _.base_url }}{{ _.tests_path }}",
+      "name": "Get All",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_315697ee02434e2e94a845ec1aff0433",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909598,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ce8476ec8ab8419886ceaea30faa8ea9",
+      "parentId": "fld_fb5892c5a4e748d482300da55a9921a6",
+      "modified": 1650030319523,
+      "created": 1650029954210,
+      "url": "{{ _.base_url }}{{ _.tests_path }}/60ff74d6-e942-4d82-9a23-5ead1208f654",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dc442161e80b415a91f53b90bc3c391f",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650029909573,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e499aa3f1713466faf686c059d8db39b",
+      "parentId": "fld_9dcb75e6d12741b7bca4624ea54931ac",
+      "modified": 1651192431366,
+      "created": 1650025147061,
+      "url": "{{ _.base_url }}{{ _.users_path }}",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Luiz\",\n\t\"email\": \"luiz@gmail.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_70a9c035d7d64a54ba8752a82aefd43b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650031132854,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_9dcb75e6d12741b7bca4624ea54931ac",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650025138903,
+      "created": 1650025138903,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650025138903,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_f29ba39e44b4468ebd4235175b573fbf",
+      "parentId": "fld_9dcb75e6d12741b7bca4624ea54931ac",
+      "modified": 1651192439947,
+      "created": 1650031132804,
+      "url": "{{ _.base_url }}{{ _.users_path }}/111fd329-453a-4c2c-85bf-a27e577f2533/status",
+      "name": "SetStatus",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_8e45c051bfd74e1596b6be667ee6ff7d",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650031132804,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ee59f8a8fed4481c9fe4aa4c2c2bdc8a",
+      "parentId": "fld_9dcb75e6d12741b7bca4624ea54931ac",
+      "modified": 1651192443691,
+      "created": 1650030971603,
+      "url": "{{ _.base_url }}{{ _.users_path }}/",
+      "name": "Get all",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_2cda52a4c34345e598fc49bff64e06b6",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650030971603,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6ce5fd6ff4cf4723810b5699dffd1e01",
+      "parentId": "fld_9dcb75e6d12741b7bca4624ea54931ac",
+      "modified": 1650031820231,
+      "created": 1650031688616,
+      "url": "{{ _.base_url }}{{ _.users_path }}/0e39c32f-7b77-49bf-b2a1-04d2345315e5",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_a366b2e0919244aa9457a3d55cac4191",
+          "name": "Authorization",
+          "value": "{{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1650030971553,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_e670eb56859f6a2038c06838b0ee768f8e53091f",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650025150190,
+      "created": 1650024988393,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1650024988393,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_e670eb56859f6a2038c06838b0ee768f8e53091f",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650024988395,
+      "created": 1650024988395,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_568f0a3a1a0547249be058c174eb753d",
+      "parentId": "wrk_c944d8abe6424619989eaed7f47a01d0",
+      "modified": 1650024988387,
+      "created": 1650024988387,
+      "fileName": "Siger",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_64e27928759f405eaf38600c3e2fdefd",
+      "parentId": "env_e670eb56859f6a2038c06838b0ee768f8e53091f",
+      "modified": 1650035930126,
+      "created": 1650025154174,
+      "name": "Local",
+      "data": {
+        "base_url": "http://localhost:8000",
+        "users_path": "/users",
+        "machines_path": "/machines",
+        "sessions_path": "/sessions",
+        "tests_path": "/tests",
+        "plans_path": "/plans",
+        "token": "Bearer {% response 'body', 'req_a5c7e74bd82b4e13b2167328b7ade516', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "users_path",
+          "machines_path",
+          "sessions_path",
+          "tests_path",
+          "plans_path",
+          "token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1650025154174,
+      "_type": "environment"
+    }
+  ]
+}
