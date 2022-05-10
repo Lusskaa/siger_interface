@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Trash from '../../assets/trash.svg'
 
-import {Popconfirm} from 'antd' // Popover
+import { Popconfirm, Typography, } from 'antd' // Popover
+
+
+
 
 import onIcon from '../../assets/onIcon.svg'
 import offIcon from '../../assets/offIcon.svg'
@@ -22,10 +25,12 @@ import {
   ContainerTitles,
   P,
   ContainerCarousel,
+  Information,
 } from './styles'
 
 function UpdateAndDeleteUsers() {
   const [users, setusers] = useState()
+  const { Paragraph } = Typography;
 
   useEffect(() => {
     async function loadUsers() {
@@ -61,9 +66,10 @@ function UpdateAndDeleteUsers() {
 
           <ContainerTests>
             <ContainerTitles>
+              <P style={{ fontWeight: '700', width: '283px' }}>ID</P>
               <P style={{ fontWeight: '700' }}>Nome</P>
               <P style={{ fontWeight: '700' }}>E-mail</P>
-              <P style={{ fontWeight: '700', width: '80px' }}>Opções</P>
+              <P style={{ fontWeight: '700'}}>Opções</P>
             </ContainerTitles>
             <Carousel
               verticalMode
@@ -73,6 +79,7 @@ function UpdateAndDeleteUsers() {
               {users &&
                 users.map((user) => (
                   <ContainerCarousel key={user.id}>
+                    <Paragraph copyable>{user.id}</Paragraph>
                     <P>{user.name}</P>
                     <P>{user.email}</P>
                     <P>
@@ -102,13 +109,27 @@ function UpdateAndDeleteUsers() {
                           <img src={Trash} alt="lata de lixo" />
                         </button>
                       </Popconfirm>
-
                     </P>
                   </ContainerCarousel>
                 ))}
             </Carousel>
           </ContainerTests>
         </Container>
+        <Information>
+          <p>
+            Caso deseje adicionar um outro usuário administrador envie e-mail
+            para:
+          </p>
+          <Paragraph copyable>
+            lucasmartinsunb@gmail.com
+          </Paragraph>
+          <p>contendo as seguintes informações:</p>
+          <ul>
+            <li> Nome do usuário</li>
+            <li> id do usuário</li>
+            <li> e-mail do usuário</li>
+          </ul>
+        </Information>
       </Main>
     </Body>
   )

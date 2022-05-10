@@ -64,17 +64,21 @@ export const ImgLogo = styled.img`
   height: 339px;
 `
 
-export const ContainerRegister = styled.div`
-  width: 954px;
-  height: 400px;
+
+export const Information = styled.div`
+  width: 500px;
+  height: 300px;
   background: rgba(242, 191, 145, 0.3);
   border-radius: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+
+  p{
+
+  }
 `
 export const TitleSingUp = styled.p`
   width: 200px;
@@ -202,45 +206,15 @@ export const SignInLink = styled.p`
     color: #323232;
   }
 `
-export const Footer = styled.div`
-  background: #0d0d0d;
-  width: 100%;
-  height: 240px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
 
-  h4 {
-    color: #ffffff;
-    display: inline-block;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    margin-bottom: 10px;
-    margin-left: 50px;
-  }
 
-  bottom: 0;
-  position: relative;
-`
-export const ContainerImages = styled.div`
-  height: 135px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-left: 50px;
-`
 
 export const Container = styled.div`
   width: 100%;
 `
 
 export const P = styled.div`
-  width: 300px;
+  width: 200px;
   display: flex;
   justify-content: center;
 `
@@ -268,10 +242,11 @@ export const ContainerCarousel = styled.div`
     background: none;
     border: none;
     cursor: pointer;
+    width: 50px;
   }
 
   .addIcon {
     height: 35px;
-    margin-right: 50px;
+    
   }
 `
