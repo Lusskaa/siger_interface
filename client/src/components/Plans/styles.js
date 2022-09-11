@@ -47,9 +47,9 @@ export const ErrorMessage = styled.p`
 `
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 `
 export const Block = styled.div`
@@ -69,12 +69,11 @@ export const ContainerCarousel = styled.div`
   justify-items: center;
   border-bottom: 2px solid #cad2d3;
   padding: 10px;
-  background-color: ${props => props.isDone ? '#FFF1F1' : ''};
+  background-color: ${(props) => (props.isDone ? '#FFF1F1' : '')};
 
   .alert {
     position: absolute;
     /* left: 1em; */
-    
   }
 
   .trash-btn {
@@ -83,25 +82,44 @@ export const ContainerCarousel = styled.div`
     cursor: pointer;
   }
 
-  .infoIcon{
+  .infoIcon {
     background: none;
     border: none;
     cursor: pointer;
-    width: 90px;
     width: 150px;
   }
 
   .ant-switch-checked {
     background: #07bc0c;
   }
-
 `
 export const P = styled.p`
-  width: 150px;
+  /* width: 5vw; */
   display: flex;
   justify-content: center;
   margin: 0 10px;
+
+  .addIcon {
+    width: 25px;
+  }
+  .submit {
+    margin: 0;
+    width: 90px;
+  }
+`
+export const ContainerTitles = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 990px;
+  gap: 20px;
   
+`
+
+export const ColumnName = styled.p`
+  font-weight: 700;
+  
+  text-align: center;
 `
 export const Filters = styled.div`
   margin: 0 0 30px 0;
@@ -131,9 +149,37 @@ export const ContainerPlans = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
 `
-export const ContainerTitles = styled.div`
+
+export const ContainerUpdate = styled.div`
+  width: 20vw;
+  /* height: 300px; */
   display: flex;
+  flex-direction: column;
+  background: rgba(242, 191, 145, 0.3);
+  border-radius: 30px;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-right: 10vw;
+
+  .text-update {
+    width: 13vw;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: justify;
+  }
+
+  .update-title {
+    width: 12vw;
+    margin-left: 15px;
+  }
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 `

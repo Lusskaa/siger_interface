@@ -1,7 +1,7 @@
 import Sequelize, { Model, DataTypes } from 'sequelize'
 import MachineType from '../enum/MachineType'
 class Machine extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init(
       {
         name: Sequelize.STRING,

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Body = styled.div`
-  height: 100%;
-  width: 100vw;
+/*   height: 100%; */
+  /* width: 100vw; */
 `
 
 export const Header = styled.div`
@@ -109,10 +109,14 @@ export const SignInLink = styled.p`
   display: flex;
   gap: 4px;
 `
+
+
+
+
 export const Footer = styled.div`
   background: #0d0d0d;
   width: 100%;
-  height: 280px;
+ /*  height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,7 +135,7 @@ export const Footer = styled.div`
   }
 
   bottom: 0;
-  position: fixed;
+  position: absolute;
 `
 export const ContainerImages = styled.div`
   height: 135px;

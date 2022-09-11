@@ -12,6 +12,7 @@ import Plans from '../../components/Plans'
 
 import api from '../../services/api'
 
+
 function Home() {
   const [refreshTable, setRefreshTable] = useState([])
   const [tests, setTests] = useState([])
@@ -59,6 +60,7 @@ function Home() {
         refresh={refreshTable}
       />
       <QualityTestsADM />
+
     </Container>
   )
 }

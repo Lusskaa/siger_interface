@@ -11,7 +11,7 @@ import { v4 } from 'uuid'
 import User from '../entities/models/User'
 
 class UserController {
-  async store(request, response) {
+  async store (request, response) {
     const { name, email, password, isActive } = request.body
 
     const userExists = await User.findOne({
@@ -36,7 +36,7 @@ class UserController {
       .json({ id: user.id, name, email, isActive: user.isActive })
   }
 
-  async setStatus(request, response) {
+  async setStatus (request, response) {
     const { id } = request.params
 
     const isAdm = process.env.ADMS.split(',').includes(id)
@@ -62,12 +62,12 @@ class UserController {
     return response.status(204).send()
   }
 
-  async index(request, response) {
+  async index (request, response) {
     const user = await User.findAll()
     return response.json(user)
   }
 
-  async delete(request, response) {
+  async delete (request, response) {
     const { id } = request.params
 
     const isAdm = process.env.ADMS.split(',').includes(id)

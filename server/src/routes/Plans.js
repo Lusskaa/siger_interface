@@ -20,7 +20,7 @@ routes.post(
   PlanController.store
 )
 routes.patch(
-  '/:planId/status',
+  '/:planId/:planSituation/status',
   PlanMiddlaware.verifyOwnPlan,
   PlanController.setStatus
 )

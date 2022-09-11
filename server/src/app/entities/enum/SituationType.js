@@ -1,0 +1,1 @@
+module.exports = ['APROVADO', 'APROVADO', 'WARNING-PERTO DA TOLERÂNCIA']

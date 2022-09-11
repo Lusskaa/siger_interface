@@ -1,11 +1,14 @@
-import Sequelize, { Model } from 'sequelize'
+import Sequelize, { Model, DataTypes } from 'sequelize'
+import SituationType from '../enum/SituationType'
 
 class Plan extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init(
       {
         date: Sequelize.DATEONLY,
-        status: Sequelize.BOOLEAN
+        status: Sequelize.BOOLEAN,
+        situation: DataTypes.ENUM(SituationType)
+
       },
       {
         sequelize
@@ -14,7 +17,7 @@ class Plan extends Model {
     return this
   }
 
-  static associate(models) {
+  static associate (models) {
     this.belongsTo(models.Test, {
       foreignKey: 'tests_id',
       as: 'tests'

@@ -11,7 +11,7 @@ import db from '../../database'
 import { Op } from 'sequelize'
 
 class PlanController {
-  async store(request, response) {
+  async store (request, response) {
     const transaction = async (transaction) => {
       for (let i = 0; i < request.body.length; i++) {
         const a = await planService.store(request.body[i])
@@ -32,7 +32,7 @@ class PlanController {
       )
   }
 
-  async index(request, response) {
+  async index (request, response) {
     const where = {}
     if (request.query.start && request.query.end) {
       where.date = {
@@ -78,16 +78,22 @@ class PlanController {
     return response.json(plan)
   }
 
-  async setStatus(request, response) {
+  async setStatus (request, response) {
     const plan = await Plan.findOne({ where: { id: request.params.planId } })
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA')
+    console.log(request.params)
     if (plan) {
-      await plan.update({ status: !plan.status })
+      await plan.update({
+        status: true,
+        situation: request.params.planSituation
+
+      })
     }
 
     return response.status(204).send()
   }
 
-  async delete(request, response) {
+  async delete (request, response) {
     const plan = await Plan.findOne({ where: { id: request.params.planId } })
 
     if (plan) {
@@ -97,4 +103,5 @@ class PlanController {
     return response.status(204).send()
   }
 }
+
 export default new PlanController()

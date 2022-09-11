@@ -81,7 +81,7 @@ function UpdateAndDeleteUsers() {
                   <ContainerCarousel key={user.id}>
                     <Paragraph copyable>{user.id}</Paragraph>
                     <P>{user.name}</P>
-                    <P>{user.email}</P>
+                    <Paragraph copyable>{user.email}</Paragraph>
                     <P>
                       <button onClick={() => setStatus(user.id)}>
                         {user.isActive ? (

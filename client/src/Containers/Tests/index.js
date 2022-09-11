@@ -163,7 +163,7 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>{errors.tolerance?.message}</ErrorMessage>
 
               <Lable>
-                O teste é funcional? Se sim, coloque no campo toleância a
+                O teste é funcional? Se sim, coloque no campo tolerância a
                 palavra 'Funcional'
               </Lable>
 
