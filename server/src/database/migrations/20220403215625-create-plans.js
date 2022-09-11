@@ -27,7 +27,7 @@ module.exports = {
   },
 
   async down (queryInterface) {
-    await queryInterface.dropTable('plans')
     await queryInterface.sequelize.query('drop type enum_plans_situation;')
+    await queryInterface.dropTable('plans')
   }
 }
