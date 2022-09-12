@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('machines', {
       id: {
         defaulValue: Sequelize.UUIDV4,
@@ -26,8 +26,7 @@ module.exports = {
     })
   },
 
-  async down(queryInterface) {
+  async down (queryInterface) {
     await queryInterface.dropTable('machines')
-    await queryInterface.sequelize.query('drop type enum_machines_type;')
   }
 }

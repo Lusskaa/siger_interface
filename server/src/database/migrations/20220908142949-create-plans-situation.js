@@ -8,9 +8,14 @@ module.exports = {
       type: Sequelize.ENUM(situationTypeEnum),
       allowNull: true
     })
+    /* // pode-se usar para debugar as queries do sequelize q ta dando pau mas nao mostra o erro na console
+    // .catch((err) => {
+    //   console.log('AAA: ', err)
+    // }) */
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.removeColumn('plans', 'situation')
+    await queryInterface.sequelize.query('drop type enum_plans_situation;')
   }
 }

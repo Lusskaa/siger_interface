@@ -1,11 +1,11 @@
-import Sequelize, { Model, DataTypes } from 'sequelize'
+import Sequelize, { Model } from 'sequelize'
 import MachineType from '../enum/MachineType'
 class Machine extends Model {
   static init (sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        type: DataTypes.ENUM(MachineType)
+        type: Sequelize.ENUM(MachineType)
       },
       {
         sequelize

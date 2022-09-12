@@ -1,4 +1,4 @@
-import Sequelize, { Model, DataTypes } from 'sequelize'
+import Sequelize, { Model } from 'sequelize'
 import SituationType from '../enum/SituationType'
 
 class Plan extends Model {
@@ -7,8 +7,7 @@ class Plan extends Model {
       {
         date: Sequelize.DATEONLY,
         status: Sequelize.BOOLEAN,
-        situation: DataTypes.ENUM(SituationType)
-
+        situation: Sequelize.ENUM(SituationType)
       },
       {
         sequelize

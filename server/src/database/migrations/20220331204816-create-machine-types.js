@@ -12,5 +12,6 @@ module.exports = {
 
   async down (queryInterface) {
     await queryInterface.removeColumn('machines', 'type')
+    await queryInterface.sequelize.query('drop type enum_machines_type;')
   }
 }
