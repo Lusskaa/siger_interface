@@ -124,6 +124,7 @@ function RegisterAndDeleteMachines() {
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
                 <option>TODAS</option>
+                <option>OUTRA</option>
               </Select>
               <ErrorMessage>{errors.type?.message}</ErrorMessage>
 

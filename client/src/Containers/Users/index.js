@@ -66,7 +66,7 @@ function UpdateAndDeleteUsers() {
 
           <ContainerTests>
             <ContainerTitles>
-              <P style={{ fontWeight: '700', width: '283px' }}>ID</P>
+              <P style={{ fontWeight: '700', width: '283px'}}>ID</P>
               <P style={{ fontWeight: '700' }}>Nome</P>
               <P style={{ fontWeight: '700' }}>E-mail</P>
               <P style={{ fontWeight: '700'}}>Opções</P>

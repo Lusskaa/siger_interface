@@ -29,7 +29,7 @@ export const ContainerItens = styled.div`
 
 export const Select = styled.select`
   border: none;
-  width: 200px;
+  width: 150px;
   height: 40px;
   background: #f7f7f7;
   box-shadow: -2px 2px 3px;
@@ -112,6 +112,7 @@ export const ContainerTitles = styled.div`
   align-items: center;
   justify-content: center;
   /* gap: 20px; */
+  margin: 0 10px;
   
 `
 
@@ -119,6 +120,7 @@ export const ColumnName = styled.p`
   font-weight: 700;
   
   text-align: center;
+  margin: 0 10px;
 `
 export const Filters = styled.div`
   margin: 0 0 30px 0;

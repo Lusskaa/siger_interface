@@ -217,6 +217,8 @@ export const P = styled.div`
   width: 200px;
   display: flex;
   justify-content: center;
+
+  
 `
 export const ContainerTests = styled.div`
   display: flex;
