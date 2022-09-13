@@ -111,8 +111,7 @@ export const ContainerTitles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 990px;
-  gap: 20px;
+  /* gap: 20px; */
   
 `
 

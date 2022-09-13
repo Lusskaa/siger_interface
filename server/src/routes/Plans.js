@@ -26,4 +26,6 @@ routes.patch(
 )
 routes.delete('/:planId', PlanMiddlaware.verifyOwnPlan, PlanController.delete)
 
+routes.delete('/', authMiddlaware.isAdm, PlanController.deleteMany)
+
 export default routes

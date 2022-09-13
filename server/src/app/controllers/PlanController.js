@@ -102,6 +102,16 @@ class PlanController {
 
     return response.status(204).send()
   }
+
+  async deleteMany (request, response) {
+    const plans = await Plan.findAll({ status: true })
+
+    if (plans) {
+      await plans.destroy()
+    }
+
+    return response.status(204).send()
+  }
 }
 
 export default new PlanController()
