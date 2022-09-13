@@ -94,7 +94,6 @@ export const ContainerCarousel = styled.div`
   }
 `
 export const P = styled.p`
-  /* width: 5vw; */
   display: flex;
   justify-content: center;
   margin: 0 10px;

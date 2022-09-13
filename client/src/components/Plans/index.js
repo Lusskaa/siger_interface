@@ -322,7 +322,7 @@ function Plans({ users, tests, machines, refresh }) {
 
                   {/* </P> */}
 
-                  <P>{plan.machines.name}</P>
+                  <P style={{width: '150px'}}>{plan.machines.name}</P>
                   <P>{moment(plan.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}</P>
 
                   <P style={{ width: '50px' }}>
