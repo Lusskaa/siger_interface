@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const Body = styled.div`
-/*   height: 100%; */
-  /* width: 100vw; */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 `
 
 export const Header = styled.div`
@@ -135,7 +136,7 @@ export const Footer = styled.div`
   }
 
   bottom: 0;
-  position: absolute;
+position: absolute;
 `
 export const ContainerImages = styled.div`
   height: 135px;

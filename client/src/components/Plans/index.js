@@ -50,6 +50,7 @@ function Plans({ users, tests, machines, refresh }) {
     machine: '',
     status: '',
   })
+  
 
   useEffect(() => {
     api
@@ -191,6 +192,7 @@ function Plans({ users, tests, machines, refresh }) {
                 onChange={filterDates}
                 className="RangerPicker"
               />
+              
             </Block>
             <Block>
               <Label>Usuário</Label>
@@ -341,7 +343,7 @@ function Plans({ users, tests, machines, refresh }) {
                   </P>
 
                   {!!plan.situation ? (
-                    <P style={{ width: '100px' }}> {plan.situation} </P>
+                    <P  highlight={plan.situation} style={{ width: '100px', fontWeight: '700' }}> {plan.situation} </P>
                   ) : (
                     <P style={{ width: '100px' }}>-</P>
                   )}
@@ -403,7 +405,7 @@ function Plans({ users, tests, machines, refresh }) {
           buttonStyle="solid"
         >
           <Radio.Button value={'APROVADO'}>APROVADO</Radio.Button>
-          <Radio.Button value={'WARNING-PERTO DA TOLERÂNCIA'}>
+          <Radio.Button style={{ display: 'table'}} value={'WARNING-PERTO DA TOLERÂNCIA'}>
             WARNING-PERTO DA TOLERÂNCIA
           </Radio.Button>
           <Radio.Button value={'REPROVADO'}>REPROVADO</Radio.Button>

@@ -97,7 +97,7 @@ export const P = styled.p`
   display: flex;
   justify-content: center;
   margin: 0 10px;
-
+  
   .addIcon {
     width: 25px;
   }
@@ -105,6 +105,16 @@ export const P = styled.p`
     margin: 0;
     width: 90px;
   }
+  border: ${(props) => ( props.highlight === "REPROVADO") ? ' 3px solid red' : ''};
+  background-color: ${(props) => ( props.highlight === "REPROVADO") ? '#FFF1F1' : ''};
+  
+  border: ${(props) => ( props.highlight === "WARNING-PERTO DA TOLERÂNCIA") ? ' 3px solid yellow' : ''};
+  background-color: ${(props) => ( props.highlight === "WARNING-PERTO DA TOLERÂNCIA") ? '#FAF8C5' : ''};
+  
+  border: ${(props) => ( props.highlight === "APROVADO") ? ' 3px solid green' : ''};
+  background-color: ${(props) => ( props.highlight === "APROVADO") ? '#ACFABA' : ''};
+  
+  
 `
 export const ContainerTitles = styled.div`
   display: flex;
@@ -181,5 +191,6 @@ export const ContainerUpdate = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    
   }
 `

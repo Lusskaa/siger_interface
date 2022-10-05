@@ -104,8 +104,8 @@ export const Input = styled.input`
   height: 46px;
   background: #f7f7f7;
   box-shadow: -4px 4px 8px;
-  border-radius: 10px;
-  border: ${(props) => (props.error ? '2px solid #cc1717' : 'none')};
+  border-radius: 10px; 
+  border: "${(props) => (props.error ? '2px solid #cc1717' : 'none')}";
   position: relative;
   padding: 10px 15px;
 

@@ -80,8 +80,6 @@ class PlanController {
 
   async setStatus (request, response) {
     const plan = await Plan.findOne({ where: { id: request.params.planId } })
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log(request.params)
     if (plan) {
       await plan.update({
         status: true,
