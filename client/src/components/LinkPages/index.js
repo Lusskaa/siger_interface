@@ -53,6 +53,13 @@ function LinkPage() {
           >
             Usuários
           </Link>
+          <Link
+            className="links"
+            onClick={() => push('/reportPlan')}
+            isActive={pathname === '/reportPlan'}
+          >
+           Exportar planos para PDF
+          </Link>
         </>
       )}
     </ContainerLinks>

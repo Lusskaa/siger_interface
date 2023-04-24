@@ -9,6 +9,7 @@ import RegisterAndDeleteTests from '../Containers/Tests'
 import RegisterAndDeleteMachines from '../Containers/Machines'
 import UpdateAndDeleteUsers from '../Containers/Users'
 import PlanCalendar from '../Containers/Plan'
+import ReportPlansPDF from '../Containers/Reports'
 
 import PrivateRoute from './private-route'
 import PrivateAdmRoute from './private-ADM-route'
@@ -37,6 +38,11 @@ function Routes() {
           exact
           component={UpdateAndDeleteUsers}
           path="/upDelUsers"
+        />
+        <PrivateAdmRoute
+          exact
+          component={ReportPlansPDF}
+          path="/reportPlan"
         />
       </Switch>
     </Router>
