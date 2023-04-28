@@ -35,9 +35,10 @@ function plansPDF(plans, filters) {
             style: 'tableHeader', fontSize:9 },
             {text: plan.users.name, style: 'tableHeader', fontSize:9 },
             {text: plan.tests.name, style: 'tableHeader', fontSize:9 },
-            {text: plan.tests.recommendedFrequency, style: 'tableHeader', fontSize:9 },
+            {text: plan.tests.type , style: 'tableHeader', fontSize:9 },
             {text: plan.machines.name, style: 'tableHeader', fontSize:9 },
             {text: plan.situation, style: 'tableHeader', fontSize:9 },
+            {text: plan.tests.description, style: 'tableHeader', fontSize:9 },
             
         ]
     })
@@ -50,13 +51,14 @@ function plansPDF(plans, filters) {
                 widthis: ['*', '*', '*', '*', '*', '*'],
                 body: [
                     [
-                        {text: 'Data limite', style: 'tableHeader', fontSize: 10 },
+                        {text: 'Data Prevista', style: 'tableHeader', fontSize: 10 },
                         {text: 'Realizado em', style: 'tableHeader', fontSize: 10 },
                         {text: 'Responsável', style: 'tableHeader', fontSize: 10 },
                         {text: 'Teste', style: 'tableHeader', fontSize: 10 },
-                        {text: 'Frequência', style: 'tableHeader', fontSize: 10 },
+                        {text: 'Tipo', style: 'tableHeader', fontSize: 10 },
                         {text: 'Máquina', style: 'tableHeader', fontSize: 10 },
                         {text: 'Resultado', style: 'tableHeader', fontSize: 10 },
+                        {text: 'Observações', style: 'tableHeader', fontSize: 10 },
                         
                 
                     ],

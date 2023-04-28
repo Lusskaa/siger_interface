@@ -1,1 +1,1 @@
-module.exports = ['Non-IMRT', 'IMRT', 'SRS/SBRT', 'TODAS', 'OUTRA']
+module.exports = ['3D', 'IMRT', 'SRS/SBRT', 'OUTRA']

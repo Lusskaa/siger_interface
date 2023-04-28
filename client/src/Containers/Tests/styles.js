@@ -64,7 +64,7 @@ export const ImgLogo = styled.img`
   height: 339px;
 `
 export const ContainerRegister = styled.div`
-  width: 954px;
+  width: 100%;
   background: rgba(242, 191, 145, 0.3);
   border-radius: 30px;
   display: flex;
@@ -74,6 +74,12 @@ export const ContainerRegister = styled.div`
   gap: 100px;
   margin-bottom: 40px;
   padding-bottom: 20px;
+
+  .formulario{
+    display: flex;
+    gap: 30px;
+  }
+
 `
 export const TitleSingUp = styled.p`
   width: 200px;
@@ -104,7 +110,30 @@ export const Lable = styled.p`
   color: #000000;
 `
 
-export const ContainerItens = styled.div`
+export const ContainerItens1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 400px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+`
+export const ContainerItens2 = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -146,6 +175,33 @@ export const Input = styled.input`
   border: none;
   position: relative;
   padding: 10px 15px;
+
+  ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+  }
+`
+export const TextArea = styled.textarea`
+  width: 321px;
+  height: 46px;
+  background: #f7f7f7;
+  box-shadow: -4px 4px 8px;
+  border-radius: 10px;
+  border: ${(props) => (props.error ? '2px solid #cc1717' : 'none')};
+  position: relative;
+  padding: 10px 15px;
+
+  width: 100%;
+  height: 100px;
+  background: #f7f7f7;
+  box-shadow: -2px 2px 3px;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  padding: 10px 15px;
+  
 
   ::placeholder {
     font-style: normal;

@@ -21,12 +21,14 @@ import {
   ImgLogoSuperior,
   Main,
   ImgLogo,
-  ContainerItens,
+  ContainerItens1,
+  ContainerItens2,
   Input,
   ErrorMessage,
   ContainerRegister,
   Lable,
   Select,
+  TextArea,
 } from './styles'
 
 function RegisterAndDeleteTests() {
@@ -42,6 +44,7 @@ function RegisterAndDeleteTests() {
     recommendedMachineType: Yup.string().required(
       'A recomendação de máquina é obrigatória'
     ),
+    description: Yup.string(),
   })
 
   const {
@@ -64,6 +67,7 @@ function RegisterAndDeleteTests() {
           recommendedMachineType: testData.recommendedMachineType,
           tolerance: testData.tolerance,
           isfunctional: testData.isfunctional,
+          description: testData.description,
         },
         { validateStatus: () => true }
       )
@@ -78,7 +82,7 @@ function RegisterAndDeleteTests() {
         throw new Error()
       }
 
-      reset()
+      /* reset() */
       setRefreshTable(!refreshTable)
     } catch (err) {
       toast.error('Falha no sistema, tente novamente')
@@ -95,9 +99,11 @@ function RegisterAndDeleteTests() {
         </TitlePage>
 
         <ContainerRegister>
-          <ContainerItens>
-            <h2 className="logintext">Novo Teste</h2>
-            <form noValidate onSubmit={handleSubmit(onSubmit)}>
+          
+           {/*  <h2 className="logintext">Novo Teste</h2> */}
+            
+            <form noValidate onSubmit={handleSubmit(onSubmit)} className='formulario'>
+            <ContainerItens1>
               <Lable>Nome</Lable>
               <Input
                 type="text"
@@ -136,7 +142,6 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>
                 {errors.recommendedFrequency?.message}
               </ErrorMessage>
-
               <Lable> Maquina recomendada </Lable>
 
               <Select
@@ -144,7 +149,7 @@ function RegisterAndDeleteTests() {
                 error={errors.recommendedMachineType?.message}
               >
                 <option />
-                <option>Non-IMRT</option>
+                <option>3D</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
                 <option>TODAS</option>
@@ -152,6 +157,8 @@ function RegisterAndDeleteTests() {
               <ErrorMessage>
                 {errors.recommendedMachineType?.message}
               </ErrorMessage>
+              </ContainerItens1>
+              <ContainerItens2>
 
               <Lable>Tolerância</Lable>
               <Input
@@ -167,13 +174,20 @@ function RegisterAndDeleteTests() {
                 palavra 'Funcional'
               </Lable>
 
+              <Lable>Descrição dos parâmetros de aferição (opicional)</Lable>
+              <TextArea
+                placeholder="Coloque aqui o(s) parâmetro(s) de seu teste"
+                type="text"
+                {...register('description')}
+                error={errors.description?.message}
+              />
+              <ErrorMessage>{errors.description?.message}</ErrorMessage>
+
               <Button type="submit" style={{ alignSelf: 'flex-start' }}>
                 Cadastrar
               </Button>
+              </ContainerItens2>
             </form>
-          </ContainerItens>
-
-          <ImgLogo src={LogoSiger} alt="Logo Siger" />
         </ContainerRegister>
 
         <QualityTestsADM refresh={refreshTable} />

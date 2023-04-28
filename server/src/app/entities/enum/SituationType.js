@@ -1,1 +1,1 @@
-module.exports = ['APROVADO', 'REPROVADO', 'WARNING-PERTO DA TOLERÂNCIA']
+module.exports = ['APROVADO', 'REPROVADO', 'ATENÇÃO-PERTO DA TOLERÂNCIA']

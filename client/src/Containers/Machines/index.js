@@ -120,7 +120,7 @@ function RegisterAndDeleteMachines() {
 
               <Select {...register('type')} error={errors.type?.message}>
                 <option />
-                <option>Non-IMRT</option>
+                <option>3D</option>
                 <option>IMRT</option>
                 <option>SRS/SBRT</option>
                 <option>TODAS</option>

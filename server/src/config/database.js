@@ -15,7 +15,7 @@ module.exports = {
   port: parseInt(process.env.DB_PORT),
   minifyAliases: true,
   dialectOptions: {
-    ssl: {
+        ssl: {
       require: true,
       rejectUnauthorized: false
     }

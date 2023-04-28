@@ -158,7 +158,7 @@ function Plans({ users, tests, machines, refresh }) {
               : ''
           }
           ${
-            plansUpdate === 'WARNING-PERTO DA TOLERÂNCIA'
+            plansUpdate === 'ATENÇÃO-PERTO DA TOLERÂNCIA'
               ? '⚠️Cuidado, o teste está dentro dos parâmeros, mas está perto dos limites de tolerância'
               : ''
           }
@@ -405,8 +405,8 @@ function Plans({ users, tests, machines, refresh }) {
           buttonStyle="solid"
         >
           <Radio.Button value={'APROVADO'}>APROVADO</Radio.Button>
-          <Radio.Button style={{ display: 'table'}} value={'WARNING-PERTO DA TOLERÂNCIA'}>
-            WARNING-PERTO DA TOLERÂNCIA
+          <Radio.Button style={{ display: 'table'}} value={'ATENÇÃO-PERTO DA TOLERÂNCIA'}>
+            ATENÇÃO-PERTO DA TOLERÂNCIA
           </Radio.Button>
           <Radio.Button value={'REPROVADO'}>REPROVADO</Radio.Button>
         </Radio.Group>

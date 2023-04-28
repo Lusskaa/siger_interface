@@ -108,8 +108,8 @@ export const P = styled.p`
   border: ${(props) => ( props.highlight === "REPROVADO") ? ' 3px solid red' : ''};
   background-color: ${(props) => ( props.highlight === "REPROVADO") ? '#FFF1F1' : ''};
   
-  border: ${(props) => ( props.highlight === "WARNING-PERTO DA TOLERÂNCIA") ? ' 3px solid yellow' : ''};
-  background-color: ${(props) => ( props.highlight === "WARNING-PERTO DA TOLERÂNCIA") ? '#FAF8C5' : ''};
+  border: ${(props) => ( props.highlight === "ATENÇÃO-PERTO DA TOLERÂNCIA") ? ' 3px solid yellow' : ''};
+  background-color: ${(props) => ( props.highlight === "ATENÇÃO-PERTO DA TOLERÂNCIA") ? '#FAF8C5' : ''};
   
   border: ${(props) => ( props.highlight === "APROVADO") ? ' 3px solid green' : ''};
   background-color: ${(props) => ( props.highlight === "APROVADO") ? '#ACFABA' : ''};
