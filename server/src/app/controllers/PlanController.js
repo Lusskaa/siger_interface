@@ -83,11 +83,19 @@ class PlanController {
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     console.log(request.params.planSituation + '/' + request.params.planResults)
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+
+    const linhas = request.params.planResults.split('&')
+    const saida = linhas.join('\n')
+
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+
     if (plan) {
       await plan.update({
         status: true,
         situation: request.params.planSituation,
-        results: request.params.planResults
+        results: saida
 
       })
     }

@@ -426,7 +426,7 @@ function Plans({ users, tests, machines, refresh }) {
       className="TextArea"
       onKeyDown={(event) => {
         if (event.key === 'Enter') {
-          setplanResults(planResults + '\n');
+          setplanResults(planResults + '&');
         }
       }}
       onChange={(event) => setplanResults(event.target.value)}
