@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { DatePicker, Switch, Popconfirm, Popover, Alert, Radio } from 'antd' // Popover
+import { DatePicker, Switch, Popconfirm, Popover, Alert, Radio, Input } from 'antd' // Popover
 const { Option } = Select
 import moment from 'moment'
 import Trash from '../../assets/trash.svg'
@@ -33,6 +33,7 @@ import Title from '../../components/Titles'
 
 function Plans({ users, tests, machines, refresh }) {
   const { RangePicker } = DatePicker
+  const { TextArea } = Input;
 
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem('siger:userData'))
@@ -42,6 +43,8 @@ function Plans({ users, tests, machines, refresh }) {
   const [plans, setPlans] = useState([])
 
   const [plansUpdate, setPlansUpdate] = useState('')
+  const [plansResults, setplansResults] = useState('')
+
 
   const [filters, setFilters] = useState({
     dates: [],
@@ -351,17 +354,17 @@ function Plans({ users, tests, machines, refresh }) {
                   {!!currentUser.isAdm || currentUser.id === plan.users_id ? (
                     <P>
                       <Popconfirm
-                        title="Tem certeza que deseja submeter este teste?
+                        title="Tem certeza que deseja enviar este teste?
                         Ao confirmar não será mais possível mudar sua opção."
                         onConfirm={() => setPlanStatus(plan)}
                         okText="Sim"
                         cancelText="Não"
                       >
                         <Button
-                          disabled={plan.status || plansUpdate == ''}
+                          disabled={plan.status || plansUpdate == '' || plansResults == ''}
                           className={'submit'}
                         >
-                          Submit
+                          Enviar
                         </Button>
                       </Popconfirm>
                     </P>
@@ -394,10 +397,8 @@ function Plans({ users, tests, machines, refresh }) {
         <Title className="update-title">Atualize o resultado do teste</Title>
 
         <p className="text-update">
-          <strong>Selecione</strong> aqui a resposta ao teste que{' '}
-          <strong>mais se adequa</strong> ao resultado em comparação ao regime
-          de tolerância. Logo em seguida, <strong>submeta</strong> os resultados
-          para cada teste <strong>clicando no botão submit.</strong>
+        Antes de enviar os resultados, certifique-se de adicionar os <b>valores numéricos com ordem de grandeza correta</b> ao preencher o <b>input de texto</b>. Para enviar os resultados de cada teste, selecione a resposta que melhor se adequa ao <b>regime de tolerância</b> e clique no botão "enviar".
+        
         </p>
         <Radio.Group
           className="radio-group"
@@ -410,6 +411,23 @@ function Plans({ users, tests, machines, refresh }) {
           </Radio.Button>
           <Radio.Button value={'REPROVADO'}>REPROVADO</Radio.Button>
         </Radio.Group>
+        <TextArea
+      showCount
+      maxLength={100}
+      className="TextArea"
+
+      
+      onChange={(event) => setplansResults(event.target.value)}
+      placeholder="Exemplo padrão:
+      Variável: valor unidade
+      X1: 5 cm
+      X2: 5.1 cm
+      Y1: 4.9 cm
+      Y2: 5 cm
+      "
+      
+    />
+
       </ContainerUpdate>
     </Container>
   )

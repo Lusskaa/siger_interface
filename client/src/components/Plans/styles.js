@@ -191,6 +191,12 @@ export const ContainerUpdate = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 100%;
     
+  }
+  .TextArea{
+    margin-top: 10px;
+    height: 180px;
+    width: 100%;
   }
 `
