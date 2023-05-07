@@ -16,7 +16,7 @@ routes.patch('/:id/status', UserController.setStatus) // UPADATE ACTIVE
 routes.delete('/:id', UserController.delete) // REMOVE
 
 routes.post('/:userId/plans', PlanValidation.store, PlanController.store) // colocar validation
-routes.patch('/:userId/plans/:planId/:planSituation/status', PlanController.setStatus) // colocar validation
+routes.patch('/:userId/plans/:planId/:planSituation/:planResults/status', PlanController.setStatus) // colocar validation
 routes.delete('/:userId/plans/:planId', PlanController.delete)
 
 export default routes

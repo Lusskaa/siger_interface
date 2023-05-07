@@ -7,6 +7,7 @@ class Plan extends Model {
       {
         date: Sequelize.DATEONLY,
         status: Sequelize.BOOLEAN,
+        results: Sequelize.STRING,
         situation: Sequelize.ENUM(SituationType)
       },
       {

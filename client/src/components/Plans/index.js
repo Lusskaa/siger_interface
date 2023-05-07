@@ -148,7 +148,7 @@ function Plans({ users, tests, machines, refresh }) {
       .patch(
         `${!!currentUser.isAdm ? `/users/${plan.users_id}` : ''}/plans/${
           plan.id
-        }/${planSituation}/status`
+        }/${planSituation}/${planResults}/status`
       )
       .then(async () => {
         toast.success(
