@@ -43,7 +43,7 @@ function Plans({ users, tests, machines, refresh }) {
   const [plans, setPlans] = useState([])
 
   const [plansUpdate, setPlansUpdate] = useState('')
-  const [plansResults, setplansResults] = useState('')
+  const [planResults, setplanResults] = useState('')
 
 
   const [filters, setFilters] = useState({
@@ -140,10 +140,10 @@ function Plans({ users, tests, machines, refresh }) {
 
   async function setPlanStatus(plan) {
     {
-      console.log(plansUpdate)
+      /* console.log(plansUpdate) */
     }
     const planSituation = plansUpdate
-    console.log(planSituation)
+    console.log(planSituation + planResults)
     await api
       .patch(
         `${!!currentUser.isAdm ? `/users/${plan.users_id}` : ''}/plans/${
@@ -361,7 +361,7 @@ function Plans({ users, tests, machines, refresh }) {
                         cancelText="Não"
                       >
                         <Button
-                          disabled={plan.status || plansUpdate == '' || plansResults == ''}
+                          disabled={plan.status || plansUpdate == '' || planResults == ''}
                           className={'submit'}
                         >
                           Enviar
@@ -417,7 +417,7 @@ function Plans({ users, tests, machines, refresh }) {
       className="TextArea"
 
       
-      onChange={(event) => setplansResults(event.target.value)}
+      onChange={(event) => setplanResults(event.target.value)}
       placeholder="Exemplo padrão:
       Variável: valor unidade
       X1: 5 cm
