@@ -42,10 +42,14 @@ function Plans({ users, tests, machines, refresh }) {
 
   const [loading, setLoading] = useState([])
   const [plans, setPlans] = useState([])
-
+  const [inputs, setInputs] = useState([''])
   const [plansUpdate, setPlansUpdate] = useState('')
   const [planResults, setplanResults] = useState('')
 
+
+  const addInput = () => {
+    setInputs([...inputs, '']); 
+  };
 
   const [filters, setFilters] = useState({
     dates: [],
@@ -54,7 +58,21 @@ function Plans({ users, tests, machines, refresh }) {
     machine: '',
     status: '',
   })
-  
+
+  const concatenate = () => {
+    const planResults = inputs.join('&'); // join the values of the inputs into a single string, separated by whitespace
+    setplanResults(planResults); // update the output string
+  }
+
+
+  const deleteInput = () => {
+    if (inputs.length > 1) {
+      const newInputs = [...inputs];
+      newInputs.pop(); // remove the last input from the inputs array
+      setInputs(newInputs); // update the inputs array
+    }
+  };
+  console.log(`aquiiiii: ${planResults}`)
 
   useEffect(() => {
     api
@@ -365,7 +383,7 @@ function Plans({ users, tests, machines, refresh }) {
                       <Popconfirm
                         title="Tem certeza que deseja enviar este teste?
                         Ao confirmar não será mais possível mudar sua opção."
-                        onConfirm={() => setPlanStatus(plan)}
+                        onConfirm={() => {concatenate(); setPlanStatus(plan)}}
                         okText="Sim"
                         cancelText="Não"
                       >
@@ -420,7 +438,7 @@ function Plans({ users, tests, machines, refresh }) {
           </Radio.Button>
           <Radio.Button value={'REPROVADO'}>REPROVADO</Radio.Button>
         </Radio.Group>
-        <TextArea
+        {/* <TextArea
       showCount
       maxLength={100}
       className="TextArea"
@@ -439,7 +457,16 @@ function Plans({ users, tests, machines, refresh }) {
       "
       value={planResults}
       
-    />
+    /> */}
+        {inputs.map((value, index) => (
+        <div key={index}>
+          <label>Input {index + 1}:</label>
+          <input type="text" value={value} onChange={(e) => setInputs([...inputs.slice(0, index), e.target.value, ...inputs.slice(index + 1)])} />
+        </div>
+      ))}
+      <button onClick={addInput}>Add Input</button>
+      <button onClick={deleteInput}>Delete Input</button>
+      <button onClick={concatenate}>Concatenate</button>
 
       </ContainerUpdate>
     </Container>
