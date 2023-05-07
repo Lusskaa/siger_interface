@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { DatePicker, Switch, Popconfirm, Popover, Alert, Radio, Input } from 'antd' // Popover
+import { DatePicker, Switch, Popconfirm, Popover, Alert, Radio, Input, Typography } from 'antd' // Popover
 const { Option } = Select
 import moment from 'moment'
 import Trash from '../../assets/trash.svg'
@@ -34,6 +34,7 @@ import Title from '../../components/Titles'
 function Plans({ users, tests, machines, refresh }) {
   const { RangePicker } = DatePicker
   const { TextArea } = Input;
+  const { Paragraph } = Typography;
 
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem('siger:userData'))
@@ -143,7 +144,11 @@ function Plans({ users, tests, machines, refresh }) {
       /* console.log(plansUpdate) */
     }
     const planSituation = plansUpdate
-    console.log(planSituation + planResults)
+    /* console.log(planSituation + planResults) */
+
+
+
+    
     await api
       .patch(
         `${!!currentUser.isAdm ? `/users/${plan.users_id}` : ''}/plans/${
@@ -314,6 +319,10 @@ function Plans({ users, tests, machines, refresh }) {
                           Tipo de tratamento da máquina:{' '}
                           {plan.tests.recommendedMachineType}
                         </p>
+                        <p>
+                          Parâmetros a serem medidos:{' '}
+                          <Paragraph copyable>{plan.tests.description}</Paragraph>
+                        </p>
                       </>
                     }
                     title="Informações"
@@ -321,7 +330,7 @@ function Plans({ users, tests, machines, refresh }) {
                   >
                     <button className="infoIcon" style={{ margin: '0 10px' }}>
                       {/* <img style={{width: '20px'}} src={Info} alt="info icon" /> */}
-                      {plan.tests.name}
+                      {plan.tests.name} 
                     </button>
                   </Popover>
 
@@ -415,8 +424,11 @@ function Plans({ users, tests, machines, refresh }) {
       showCount
       maxLength={100}
       className="TextArea"
-
-      
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          setplanResults(planResults + '\n');
+        }
+      }}
       onChange={(event) => setplanResults(event.target.value)}
       placeholder="Exemplo padrão:
       Variável: valor unidade
@@ -425,6 +437,7 @@ function Plans({ users, tests, machines, refresh }) {
       Y1: 4.9 cm
       Y2: 5 cm
       "
+      value={planResults}
       
     />
 

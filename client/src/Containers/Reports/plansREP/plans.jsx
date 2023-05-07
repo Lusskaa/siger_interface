@@ -38,7 +38,7 @@ function plansPDF(plans, filters) {
             {text: plan.tests.type , style: 'tableHeader', fontSize:9 },
             {text: plan.machines.name, style: 'tableHeader', fontSize:9 },
             {text: plan.situation, style: 'tableHeader', fontSize:9 },
-            {text: plan.tests.description, style: 'tableHeader', fontSize:9 },
+            {text: plan.results, style: 'tableHeader', fontSize:9 },
             
         ]
     })

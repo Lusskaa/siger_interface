@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Trash from '../../assets/trash.svg'
 
-import { Popconfirm, Typography, } from 'antd' // Popover
+import { Popconfirm, Typography } from 'antd' // Popover
 
 
 
