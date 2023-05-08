@@ -199,4 +199,38 @@ export const ContainerUpdate = styled.div`
     height: 180px;
     width: 100%;
   }
+  .cadaInput{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .bottonInput{
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    
+  }
+
+  .parametros{
+  width: 100%;
+  height: 30px;
+  background: #ffffff;
+  box-shadow: -1px 1px 1px;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  padding: 10px 15px;
+
+  ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+  }
+  }
+  .botoesDoInput{
+    width: 80px;
+    height: 30px;
+  }
 `

@@ -425,7 +425,8 @@ function Plans({ users, tests, machines, refresh }) {
 
         <p className="text-update">
         Antes de enviar os resultados, certifique-se de adicionar os <b>valores numéricos com ordem de grandeza correta</b> ao preencher o <b>input de texto</b>. Para enviar os resultados de cada teste, selecione a resposta que melhor se adequa ao <b>regime de tolerância</b> e clique no botão "enviar".
-        
+        Para o parâmetro medido siga o seguinte template: <br></br>
+        parâmetro: valor unidade 
         </p>
         <Radio.Group
           className="radio-group"
@@ -438,35 +439,19 @@ function Plans({ users, tests, machines, refresh }) {
           </Radio.Button>
           <Radio.Button value={'REPROVADO'}>REPROVADO</Radio.Button>
         </Radio.Group>
-        {/* <TextArea
-      showCount
-      maxLength={100}
-      className="TextArea"
-      onKeyDown={(event) => {
-        if (event.key === 'Enter') {
-          setplanResults(planResults + '&');
-        }
-      }}
-      onChange={(event) => setplanResults(event.target.value)}
-      placeholder="Exemplo padrão:
-      Variável: valor unidade
-      X1: 5 cm
-      X2: 5.1 cm
-      Y1: 4.9 cm
-      Y2: 5 cm
-      "
-      value={planResults}
-      
-    /> */}
+
         {inputs.map((value, index) => (
-        <div key={index}>
-          <label>Input {index + 1}:</label>
-          <input type="text" value={value} onChange={(e) => setInputs([...inputs.slice(0, index), e.target.value, ...inputs.slice(index + 1)])} />
+        <div className='cadaInput' key={index}>
+          <label>Parâmetro {index + 1}:</label>
+          <input className='parametros' placeholder='X1: 5.0 cm' type="text" value={value} onChange={(e) => {setInputs([...inputs.slice(0, index), e.target.value, ...inputs.slice(index + 1)]); concatenate()}} />
         </div>
       ))}
-      <button onClick={addInput}>Add Input</button>
-      <button onClick={deleteInput}>Delete Input</button>
-      <button onClick={concatenate}>Concatenate</button>
+
+      <div className='bottonInput'>
+      <Button className='botoesDoInput'  onClick={addInput}>Add</Button>
+      <Button className='botoesDoInput'  onClick={deleteInput}>Delete</Button>
+      </div>
+      
 
       </ContainerUpdate>
     </Container>
